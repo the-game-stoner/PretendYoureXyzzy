@@ -117,36 +117,122 @@ if (color != null) {
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>PYX - Add Cards</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<title>Terrible People - Add Cards</title>
+<style type="text/css">
+  body {
+    background: #070a0f;
+    color: rgba(255, 255, 255, 0.92);
+    font-family: ui-sans-serif, system-ui, sans-serif;
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  h1 {
+    font-size: 1.5rem;
+    letter-spacing: -0.02em;
+    margin-top: 30px;
+  }
+  a {
+    color: #09ff03;
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+  .back-link {
+    display: inline-block;
+    margin-bottom: 20px;
+  }
+  form {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 18px;
+    padding: 20px;
+    margin-bottom: 30px;
+  }
+  label {
+    display: inline-block;
+    width: 80px;
+    font-weight: bold;
+  }
+  input[type="text"] {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 12px;
+    padding: 8px 12px;
+    color: rgba(255, 255, 255, 0.92);
+    font-size: 14px;
+    width: 500px;
+    margin-bottom: 10px;
+  }
+  input[type="text"]:focus {
+    outline: none;
+    border-color: #09ff03;
+  }
+  input[type="submit"] {
+    background: #09ff03;
+    border: none;
+    border-radius: 40px;
+    padding: 10px 24px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #000;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  input[type="submit"]:hover {
+    background: #0cdd00;
+  }
+  .error {
+    color: #ff4444;
+  }
+  .success {
+    color: #09ff03;
+  }
+</style>
 </head>
 <body>
-<span style="color:red"><%= error %></span>
-<span style="color:blue"><%= status %></span>
+
+<a href="game.jsp" class="back-link">&larr; Back to Game</a>
+
+<h1>Terrible People - Add Cards</h1>
+
 <p>Convention is to use four underscores for the blanks on black cards.</p>
-<h1 id="black">Black Card</h1>
+
+<div class="error"><%= error %></div>
+<div class="success"><%= status %></div>
+
+<h2>Black Card</h2>
 <form method="post" action="addcard.jsp">
 <input type="hidden" name="color" value="black" />
-<label for="black_text">Card Text</label><input type="text" id="black_text" name="text" size="150" />
+<label for="black_text">Card Text</label>
+<input type="text" id="black_text" name="text" size="150" />
 <br/>
-<label for="pick">Pick</label><input type="text" id="pick" name="pick" size="3" value="1" />
+<label for="pick">Pick</label>
+<input type="text" id="pick" name="pick" size="3" value="1" />
 <br/>
-<label for="draw">Draw</label><input type="text" id="draw" name="draw" size="3" value="0" />
+<label for="draw">Draw</label>
+<input type="text" id="draw" name="draw" size="3" value="0" />
 <br/>
 <label for="watermark_b">Watermark</label>
 <input type="text" id="watermark_b" name="watermark" size="3" maxlength="5" value="<%= watermark %>" />
 <br/>
-<input type="submit" value="Add card" />
+<input type="submit" value="Add Black Card" />
 </form>
-<h1 id="white">White Card</h1>
+
+<h2>White Card</h2>
 <form method="post" action="addcard.jsp">
 <input type="hidden" name="color" value="white" />
-<label for="white_text">Card Text</label><input type="text" id="white_text" name="text" size="150" />
+<label for="white_text">Card Text</label>
+<input type="text" id="white_text" name="text" size="150" />
 <br/>
 <label for="watermark_w">Watermark</label>
 <input type="text" id="watermark_w" name="watermark" size="3" maxlength="5" value="<%= watermark %>" />
 <br/>
-<input type="submit" value="Add card" />
+<input type="submit" value="Add White Card" />
 </form>
+
 <script type="text/javascript">
 var field = '<%= field %>';
 if ('' != field) {
