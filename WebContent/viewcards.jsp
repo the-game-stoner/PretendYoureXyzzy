@@ -52,9 +52,7 @@ ServletContext servletContext = pageContext.getServletContext();
 Injector injector = (Injector) servletContext.getAttribute(StartupUtils.INJECTOR);
 boolean includeInactive = injector.getInstance(Key.get(Boolean.TYPE, IncludeInactiveCardsets.class));
 
-// cheap way to make sure we can close the hibernate session at the end of the page
 try {
-  // load from db
   @SuppressWarnings("unchecked")
   List<PyxCardSet> cardSets = hibernateSession
       .createQuery(PyxCardSet.getCardsetQuery(includeInactive))
@@ -62,14 +60,11 @@ try {
       .setCacheable(true)
       .list();
   
-  // all of the data to send to the client
   Map<String, Object> data = new HashMap<String, Object>();
   
-  // mapping of what card sets each card is in
   Map<Integer, List<Integer>> whiteCardSets = new HashMap<Integer, List<Integer>>();
   Map<Integer, List<Integer>> blackCardSets = new HashMap<Integer, List<Integer>>();
   
-  // all of the cards that are actually in a card set
   Set<PyxWhiteCard> whiteCards = new HashSet<PyxWhiteCard>();
   Set<PyxBlackCard> blackCards = new HashSet<PyxBlackCard>();
   
@@ -138,7 +133,8 @@ try {
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Pretend You're Xyzzy: View Cards</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<title>Terrible People - Card Viewer</title>
 <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
 <script type="text/javascript" src="js/jquery-migrate-1.2.1.js"></script>
 <script type="text/javascript" src="js/jquery.cookie.js"></script>
@@ -175,12 +171,10 @@ $(document).ready(function() {
   $('#search').keyup(filter);
   $('#cardSets').change(filter);
   $('#cardTable').tablesorter();
-  // pre-sort by text
   $('#cardTextColumn').click();
 });
 
 function filter() {
-  // hide everything
   $('#cards tr').hide();
   applyFilter(data.blackCards, 'b');
   applyFilter(data.whiteCards, 'w');
@@ -211,9 +205,33 @@ function applyFilter(cardArray, prefix) {
 table td {
   padding: 5px;
 }
+
+body {
+  background: radial-gradient(900px 500px at 15% 10%, rgba(9, 255, 3, 0.16), transparent 62%),
+              linear-gradient(var(--circle-bg), var(--circle-bg));
+  background-attachment: fixed;
+  color: var(--circle-text);
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  margin: 0;
+  padding: 20px;
+}
+
+a {
+  color: var(--circle-accent);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
 </style>
 </head>
 <body>
+
+<div style="margin-bottom: 20px;">
+  <a href="game.jsp">&larr; Back to Game</a>
+</div>
+
 <div style="float: left;">
   Show only cards from card sets (hold ctrl or cmd to select multiple):
   <br/>
@@ -228,7 +246,7 @@ table td {
   <input type="text" id="search" style="width: 400px;" />
 </div>
 <div style="clear:both"></div>
-<table id="cardTable">
+<table id="cardTable" style="margin-top: 20px; width: 100%; border-collapse: collapse;">
   <thead>
     <tr>
       <th class="sorting" style="width: 75px;">Type</th>
