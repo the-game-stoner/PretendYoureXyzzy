@@ -82,60 +82,52 @@ boolean allowBlankCards = injector.getInstance(Key.get(new TypeLiteral<Boolean>(
 </head>
 <body id="gamebody">
 
-<div id="welcome">
-  <div id="tweetbox">
-    <h3>Recent tweets (mainly server status updates)</h3>
-    <a class="twitter-timeline" data-height="500" data-dnt="true" data-theme="dark"
-    href="https://twitter.com/_PYX_?ref_src=twsrc%5Etfw">Tweets by _PYX_</a>
-    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-  </div>
+<div id="welcome" class="welcome-container">
   <h1 tabindex="0">
-    Terrible <dfn
-    title="Party game for The-Circle community">People</dfn>
+    Terrible <dfn title="Party game for The-Circle community">People</dfn>
   </h1>
   <h3>A party game for The-Circle community.</h3>
-  <p>
-    If this is your first time playing, you may wish to read <a href="index.jsp">the changelog and
-    list of known issues</a>.
-  </p>
-  <p>
-    Your computer's IP address will <strong>always</strong> be logged when you load the game client.
-    It is not tied in any way to your username, except possibly if a server error occurs. Gameplay
-    results are logged permanently, but without information identifying you.
-  </p>
-  <p tabindex="0">Most recent update: 3 September 2018:</p>
-  <ul>
-    <li>All chat and fill-in-the-blank cards have been disabled. If you're still out of the loop,
-    <a href="https://gist.githubusercontent.com/ajanata/07ededdb584f7bb77a8c7191d3a4bbcc/raw/e76faacc19c2bb598a1a8fd94b9ebcb29c5502e0">
-    here's why.</a></li>
-  </ul>
-  <h2>The servers are incredibly busy right now. There are several servers to try, there will be
-  room elsewhere! <a href='https://pretendyoure.xyz/zy'>CLICK HERE</a> to see the server list. As
-  long as you're on the same server as your friends, you can play together. Please stop crowding
-  pyx-1 ("The Biggest, Blackest Dick").</h2>
-  <div id="nickbox">
+
+  <div class="info-box">
+    <p>If this is your first time playing, you may wish to read <a href="index.jsp">the changelog and list of known issues</a>.</p>
+    <p>Your computer's IP address will <strong>always</strong> be logged when you load the game client. Gameplay results are logged permanently, but without information identifying you.</p>
+  </div>
+
+  <div class="info-box">
+    <p><strong>Most recent update: 3 September 2018</strong></p>
+    <ul>
+      <li>All chat and fill-in-the-blank cards have been disabled. <a href="https://gist.githubusercontent.com/ajanata/07ededdb584f7bb77a8c7191d3a4bbcc/raw/e76faacc19c2bb598a1a8fd94b9ebcb29c5502e0">Learn why.</a></li>
+    </ul>
+  </div>
+
+  <div id="nickbox" class="nickbox">
     <label for="nickname">Nickname:</label>
     <input type="text" id="nickname" value="" maxlength="30" role="textbox"
         aria-label="Enter your nickname." data-lpignore="true" />
     <label for="idcode">
-    <dfn title="Only available via HTTPS. Provide a secret identification code to positively identify yourself in the chat.">
-    Optional identification code:</dfn></label>
+      <dfn title="Only available via HTTPS. Provide a secret identification code to positively identify yourself in the chat.">
+        Optional identification code:
+      </dfn>
+    </label>
     <input type="password" id="idcode" value="" maxlength="100" disabled="disabled"
         aria-label="Optionally enter an identification code." />
     <a href="https://github.com/ajanata/PretendYoureXyzzy/wiki/Identification-Codes">(Help)</a>
     <input type="button" id="nicknameconfirm" value="Set" />
     <span id="nickbox_error" class="error"></span>
   </div>
-  <p><a href="privacy.html"><strong>Hey, this is important:</strong> Read the privacy page for
-  details about what gameplay information is collected and how it's shared.</a></p>
-  <p>
+
+  <p><a href="privacy.html"><strong>Hey, this is important:</strong> Read the privacy page for details about what gameplay information is collected and how it's shared.</a></p>
+
+  <div class="button-container">
+    <input type="button" class="btn-primary" value="Enter Game" onclick="document.getElementById('nicknameconfirm').click();" />
+  </div>
+
+  <p class="footer-text">
     Terrible People is a party game for The-Circle community, inspired by Cards Against Humanity,
-    which is available at <a href="http://www.cardsagainsthumanity.com/">cardsagainsthumanity.com</a>.
+    available at <a href="http://www.cardsagainsthumanity.com/">cardsagainsthumanity.com</a>.
     This web version is in no way endorsed or sponsored by cardsagainsthumanity.com.
-    You may download the source code from
-    <a href="https://github.com/ajanata/PretendYoureXyzzy">GitHub</a>. For full license
-    information, including information about included libraries, see the
-    <a href="license.html">full license information</a>.
+    Source code available on <a href="https://github.com/ajanata/PretendYoureXyzzy">GitHub</a>.
+    See <a href="license.html">full license information</a>.
   </p>
 </div>
 
