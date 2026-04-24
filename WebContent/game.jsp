@@ -51,7 +51,7 @@ boolean allowBlankCards = injector.getInstance(Key.get(new TypeLiteral<Boolean>(
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Pretend You're Xyzzy</title>
+<title>Terrible People</title>
 <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
 <script type="text/javascript" src="js/jquery-migrate-1.2.1.js"></script>
 <script type="text/javascript" src="js/jquery.cookie.js"></script>
@@ -85,16 +85,15 @@ boolean allowBlankCards = injector.getInstance(Key.get(new TypeLiteral<Boolean>(
 <div id="welcome">
   <div id="tweetbox">
     <h3>Recent tweets (mainly server status updates)</h3>
-    <a class="twitter-timeline" data-height="500" data-dnt="true" data-theme="light"
+    <a class="twitter-timeline" data-height="500" data-dnt="true" data-theme="dark"
     href="https://twitter.com/_PYX_?ref_src=twsrc%5Etfw">Tweets by _PYX_</a>
     <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
   </div>
   <h1 tabindex="0">
-    Pretend You're <dfn
-    title="Xyzzy is an Artificial Unintelligence bot. You'll be making more sense than him in this game.">
-    Xyzzy</dfn>
+    Terrible <dfn
+    title="Party game for The-Circle community">People</dfn>
   </h1>
-  <h3>A <a href="http://cardsagainsthumanity.com/">Cards Against Humanity</a> clone.</h3>
+  <h3>A party game for The-Circle community.</h3>
   <p>
     If this is your first time playing, you may wish to read <a href="index.jsp">the changelog and
     list of known issues</a>.
@@ -130,12 +129,10 @@ boolean allowBlankCards = injector.getInstance(Key.get(new TypeLiteral<Boolean>(
   <p><a href="privacy.html"><strong>Hey, this is important:</strong> Read the privacy page for
   details about what gameplay information is collected and how it's shared.</a></p>
   <p>
-    Pretend You're Xyzzy is a Cards Against Humanity clone, which is available at
-    <a href="http://www.cardsagainsthumanity.com/">cardsagainsthumanity.com</a>, where you can buy
-    it or download and print it out yourself. It is distributed under a
-    <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons - Attribution -
-    Noncommercial - Share Alike license</a>. This web version is in no way endorsed or sponsored by
-    cardsagainsthumanity.com. You may download the source code to this version from
+    Terrible People is a party game for The-Circle community, inspired by Cards Against Humanity,
+    which is available at <a href="http://www.cardsagainsthumanity.com/">cardsagainsthumanity.com</a>.
+    This web version is in no way endorsed or sponsored by cardsagainsthumanity.com.
+    You may download the source code from
     <a href="https://github.com/ajanata/PretendYoureXyzzy">GitHub</a>. For full license
     information, including information about included libraries, see the
     <a href="license.html">full license information</a>.
@@ -293,7 +290,7 @@ boolean allowBlankCards = injector.getInstance(Key.get(new TypeLiteral<Boolean>(
         <br/>
         <span class="watermark"></span>
 	    </div>
-	    <div class="logo_text">Pretend You're Xyzzy</div>
+	    <div class="logo_text">Terrible People</div>
 	  </div>
     <div class="card_metadata">
       <div class="draw hide">DRAW <div class="card_number"></div></div>
@@ -321,7 +318,7 @@ boolean allowBlankCards = injector.getInstance(Key.get(new TypeLiteral<Boolean>(
         <br/>
         <span class="watermark"></span>
 	    </div>
-	    <div class="logo_text">Pretend You're Xyzzy</div>
+	    <div class="logo_text">Terrible People</div>
 	  </div>
 	</div>
 </div>
