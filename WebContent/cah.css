@@ -32,8 +32,127 @@
   --circle-accent: #09ff03;
   --circle-accent-soft: rgba(9, 255, 3, 0.14);
   --circle-radius: 18px;
+  --circle-radius-sm: 14px;
   --circle-shadow: 0 24px 70px rgba(0, 0, 0, 0.45);
+  --circle-shadow-sm: 0 18px 44px rgba(0, 0, 0, 0.35);
 }
+
+/* ========== WELCOME PAGE STYLES (Cleaned up, no tweetbox) ========== */
+
+.welcome-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+.welcome-container h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.02em;
+}
+
+.welcome-container h3 {
+  font-size: 1.2rem;
+  color: var(--circle-muted);
+  margin-bottom: 2rem;
+  font-weight: normal;
+}
+
+.info-box {
+  background: var(--circle-panel);
+  border: 1px solid var(--circle-border);
+  border-radius: var(--circle-radius);
+  padding: 1rem 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+.info-box ul {
+  margin: 0.5rem 0 0 1.5rem;
+  padding: 0;
+}
+
+.info-box li {
+  margin: 0.25rem 0;
+  color: var(--circle-muted);
+}
+
+.nickbox {
+  background: var(--circle-panel2);
+  border: 1px solid var(--circle-border);
+  border-radius: var(--circle-radius);
+  padding: 1.25rem;
+  margin: 1.5rem 0;
+  text-align: center;
+}
+
+.nickbox label {
+  display: inline-block;
+  margin-right: 0.5rem;
+}
+
+.nickbox input[type="text"],
+.nickbox input[type="password"] {
+  background: var(--circle-panel);
+  border: 1px solid var(--circle-border);
+  border-radius: 40px;
+  padding: 8px 16px;
+  color: var(--circle-text);
+  font-size: 14px;
+  margin-right: 0.5rem;
+}
+
+.nickbox input[type="text"]:focus,
+.nickbox input[type="password"]:focus {
+  outline: none;
+  border-color: var(--circle-accent);
+}
+
+.button-container {
+  text-align: center;
+  margin: 1.5rem 0;
+}
+
+.btn-primary {
+  background: var(--circle-accent);
+  border: none;
+  border-radius: 40px;
+  padding: 12px 32px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #000;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-primary:hover {
+  background: #0cdd00;
+  transform: scale(1.02);
+  box-shadow: 0 0 20px rgba(9, 255, 3, 0.3);
+}
+
+.footer-text {
+  font-size: 11px;
+  color: var(--circle-muted);
+  text-align: center;
+  margin-top: 2rem;
+  border-top: 1px solid var(--circle-border);
+  padding-top: 1.5rem;
+}
+
+.footer-text a {
+  color: var(--circle-accent);
+}
+
+details.info-box summary {
+  cursor: pointer;
+  font-weight: bold;
+}
+
+details.info-box summary:hover {
+  color: var(--circle-accent);
+}
+
+/* ========== ORIGINAL GAME STYLES ========== */
 
 #gamebody {
   overflow: hidden;
@@ -730,4 +849,215 @@ dfn {
 .card_text {
   word-wrap: break-word;
   overflow: hidden;
+}
+
+/* ========== MOBILE RESPONSIVE STYLES ========== */
+
+@media (max-width: 768px) {
+  body {
+    font-size: 10px;
+  }
+
+  /* Welcome page mobile */
+  .welcome-container {
+    padding: 1rem;
+  }
+
+  .welcome-container h1 {
+    font-size: 1.8rem;
+  }
+
+  .welcome-container h3 {
+    font-size: 1rem;
+  }
+
+  .nickbox input[type="text"],
+  .nickbox input[type="password"] {
+    display: block;
+    width: 100%;
+    margin: 0.5rem 0;
+  }
+
+  .btn-primary {
+    width: 100%;
+    padding: 10px;
+  }
+
+  /* Game layout mobile fixes */
+  .game_hand_cards {
+    min-width: auto;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  .game_hand_cards .card {
+    display: inline-block;
+    float: none;
+    width: 120px;
+    height: 120px;
+    font-size: 10pt;
+    padding: 8px;
+  }
+
+  .game_left_side {
+    width: 100%;
+    float: none;
+    text-align: center;
+  }
+
+  .game_black_card_wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .game_black_card {
+    width: 180px;
+    height: 180px;
+  }
+
+  .game_right_side {
+    position: static;
+    left: auto;
+    width: 100%;
+  }
+
+  .game_right_side_cards {
+    min-width: auto;
+  }
+
+  .game_white_cards_binder {
+    display: inline-block;
+    margin: 2px;
+  }
+
+  .game_white_cards_binder .card {
+    width: 100px;
+    height: 100px;
+  }
+
+  .scoreboard {
+    width: 100%;
+    position: static;
+    height: auto;
+    max-height: 200px;
+  }
+
+  #info_area {
+    width: 100%;
+    position: static;
+    margin-bottom: 10px;
+  }
+
+  #tabs {
+    width: 100%;
+    position: static;
+    right: auto;
+  }
+
+  #bottom {
+    position: static;
+    height: auto;
+    top: auto;
+    margin-top: 20px;
+  }
+
+  #canvas {
+    height: auto;
+  }
+
+  #main {
+    height: auto;
+  }
+
+  .game_hand {
+    position: static;
+    height: auto;
+    margin-top: 20px;
+  }
+
+  .your_hand {
+    position: static;
+    text-align: center;
+    display: block;
+  }
+
+  .game_top {
+    text-align: center;
+  }
+
+  .game_menu_bar {
+    float: none;
+    display: inline-block;
+    margin: 0 5px;
+  }
+
+  .gamelist_lobby {
+    width: 100%;
+    height: auto;
+    min-height: 150px;
+  }
+
+  .gamelist_lobby_left {
+    width: 70%;
+  }
+
+  .gamelist_lobby_right {
+    width: 28%;
+  }
+
+  .chat {
+    width: 85%;
+  }
+
+  .log {
+    height: 150px;
+  }
+}
+
+@media (max-width: 480px) {
+  .gamelist_lobby_left {
+    width: 100%;
+    float: none;
+  }
+
+  .gamelist_lobby_right {
+    width: 100%;
+    float: none;
+    display: flex;
+    gap: 10px;
+    padding: 10px;
+  }
+
+  .card {
+    width: 100px;
+    height: 100px;
+    font-size: 9pt;
+    padding: 6px;
+  }
+
+  .game_black_card {
+    width: 140px;
+    height: 140px;
+  }
+
+  .game_white_cards_binder .card {
+    width: 80px;
+    height: 80px;
+  }
+
+  .logo_text {
+    font-size: 6pt;
+    left: 35px;
+  }
+
+  .logo_element {
+    width: 16px;
+    height: 16px;
+  }
+
+  .logo_1 { left: 0px; }
+  .logo_2 { left: 8px; }
+  .logo_3 { left: 14px; top: 3px; }
 }
