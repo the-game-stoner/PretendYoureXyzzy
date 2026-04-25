@@ -76,35 +76,103 @@
   color: var(--circle-muted);
 }
 
+/* Nickname form - improved layout */
 .nickbox {
   background: var(--circle-panel2);
   border: 1px solid var(--circle-border);
   border-radius: var(--circle-radius);
-  padding: 1.25rem;
+  padding: 1.75rem;
   margin: 1.5rem 0;
-  text-align: center;
+  text-align: left;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .nickbox label {
-  display: inline-block;
-  margin-right: 0.5rem;
+  display: block;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--circle-text);
+  margin-bottom: 0.4rem;
+  margin-top: 1rem;
+}
+
+.nickbox label:first-of-type {
+  margin-top: 0;
+}
+
+.nickbox dfn {
+  border-bottom: 1px dotted var(--circle-accent);
+  cursor: help;
 }
 
 .nickbox input[type="text"],
 .nickbox input[type="password"] {
+  display: block;
+  width: 100%;
   background: var(--circle-panel);
   border: 1px solid var(--circle-border);
-  border-radius: 40px;
-  padding: 8px 16px;
+  border-radius: 12px;
+  padding: 12px 16px;
   color: var(--circle-text);
-  font-size: 14px;
-  margin-right: 0.5rem;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  box-sizing: border-box;
+  transition: all 0.2s ease;
 }
 
 .nickbox input[type="text"]:focus,
 .nickbox input[type="password"]:focus {
   outline: none;
   border-color: var(--circle-accent);
+  box-shadow: 0 0 0 3px var(--circle-accent-soft);
+}
+
+.nickbox input[type="text"]:disabled,
+.nickbox input[type="password"]:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.nickbox a {
+  display: inline-block;
+  font-size: 0.85rem;
+  color: var(--circle-accent);
+  margin-top: 0.25rem;
+  margin-bottom: 0.75rem;
+  text-decoration: none;
+}
+
+.nickbox a:hover {
+  text-decoration: underline;
+}
+
+.nickbox #nicknameconfirm {
+  display: inline-block;
+  margin-top: 0.75rem;
+  padding: 10px 28px;
+  font-size: 1rem;
+  font-weight: bold;
+  background: var(--circle-accent);
+  color: #000;
+  border: none;
+  border-radius: 40px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.nickbox #nicknameconfirm:hover {
+  background: #0cdd00;
+  transform: scale(1.02);
+  box-shadow: 0 0 12px rgba(9, 255, 3, 0.3);
+}
+
+.nickbox .error {
+  display: block;
+  margin-top: 0.75rem;
+  color: #ff5555;
+  font-size: 0.85rem;
 }
 
 .button-container {
@@ -117,7 +185,7 @@
   border: none;
   border-radius: 40px;
   padding: 12px 32px;
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: bold;
   color: #000;
   cursor: pointer;
@@ -192,13 +260,6 @@ h2, h3, h4 {
 
 #menubar_right {
   float: right;
-}
-
-#nickbox {
-  border: 1px solid var(--circle-border);
-  border-radius: 40px;
-  display: inline;
-  padding: 5px 12px;
 }
 
 #canvas {
@@ -871,11 +932,14 @@ dfn {
     font-size: 1rem;
   }
 
+  .nickbox {
+    padding: 1rem;
+  }
+  
   .nickbox input[type="text"],
   .nickbox input[type="password"] {
-    display: block;
-    width: 100%;
-    margin: 0.5rem 0;
+    font-size: 0.9rem;
+    padding: 10px 14px;
   }
 
   .btn-primary {
