@@ -22,7 +22,7 @@ WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWIS
 WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 --%>
 <%--
-Index page - cleaned and modernized for The-Circle theme.
+Index page - warm and welcoming for The-Circle community.
 --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
@@ -30,7 +30,7 @@ Index page - cleaned and modernized for The-Circle theme.
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Terrible People — A party game for The-Circle community</title>
+<title>Terrible People — Let's play!</title>
 <link rel="stylesheet" type="text/css" href="cah.css" />
 <style>
   .welcome-container {
@@ -47,7 +47,7 @@ Index page - cleaned and modernized for The-Circle theme.
     background: var(--circle-panel);
     border: 1px solid var(--circle-border);
     border-radius: var(--circle-radius);
-    padding: 1rem 1.25rem;
+    padding: 1.25rem 1.5rem;
     margin-bottom: 1.25rem;
     transition: all 0.2s ease;
   }
@@ -55,12 +55,30 @@ Index page - cleaned and modernized for The-Circle theme.
     border-color: var(--circle-accent);
     transform: translateX(4px);
   }
+  .how-to-play {
+    background: var(--circle-accent-soft);
+    border-left: 4px solid var(--circle-accent);
+  }
+  .how-to-play ol {
+    margin: 0.5rem 0 0 1.25rem;
+    padding: 0;
+  }
+  .how-to-play li {
+    margin: 0.5rem 0;
+    line-height: 1.4;
+  }
+  .privacy-note {
+    font-size: 0.85rem;
+    color: var(--circle-muted);
+    text-align: center;
+    margin: 1rem 0;
+  }
   .btn-primary {
     background: var(--circle-accent);
     border: none;
     border-radius: 40px;
-    padding: 12px 32px;
-    font-size: 1rem;
+    padding: 14px 36px;
+    font-size: 1.2rem;
     font-weight: bold;
     color: #000;
     cursor: pointer;
@@ -74,7 +92,7 @@ Index page - cleaned and modernized for The-Circle theme.
   }
   @keyframes pulse {
     0%, 100% { box-shadow: 0 0 0 0 rgba(9, 255, 3, 0.4); }
-    50% { box-shadow: 0 0 0 8px rgba(9, 255, 3, 0); }
+    50% { box-shadow: 0 0 0 10px rgba(9, 255, 3, 0); }
   }
   .footer-text {
     font-size: 11px;
@@ -82,12 +100,9 @@ Index page - cleaned and modernized for The-Circle theme.
     margin-top: 2rem;
     border-top: 1px solid var(--circle-border);
     padding-top: 1.5rem;
+    color: var(--circle-muted);
   }
-  details.info-box summary {
-    cursor: pointer;
-    font-weight: bold;
-  }
-  details.info-box summary:hover {
+  .footer-text a {
     color: var(--circle-accent);
   }
 </style>
@@ -95,52 +110,40 @@ Index page - cleaned and modernized for The-Circle theme.
 <body>
 
 <div class="welcome-container">
-  <h1>Terrible <dfn title="Party game for The-Circle community">People</dfn></h1>
-  <h3>A party game for The-Circle community.</h3>
+  <h1>🎉 Terrible <dfn title="Party game for The-Circle community">People</dfn></h1>
+  <h3>A party game for The-Circle community — get ready to laugh!</h3>
 
-  <div class="info-box">
-    <p>🔒 Your IP address is logged for security. Gameplay results are logged anonymously.</p>
-  </div>
-
-  <div class="info-box" style="background: var(--circle-accent-soft); border-color: var(--circle-accent);">
-    <p style="margin: 0; font-weight: bold;">✨ Quick Start:</p>
-    <ol style="margin: 0.5rem 0 0 1.25rem;">
-      <li>Enter a nickname</li>
-      <li>Join an existing game or create your own</li>
-      <li>Wait for the Card Czar to start the round</li>
-      <li>Pick the funniest white card to win Awesome Points!</li>
+  <!-- HOW TO PLAY - friendly and clear -->
+  <div class="info-box how-to-play">
+    <p style="margin: 0 0 0.5rem 0; font-weight: bold; font-size: 1.1rem;">🎲 How to Play</p>
+    <ol>
+      <li><strong>Pick a nickname</strong> — anything goes!</li>
+      <li><strong>Join or create a game</strong> — play with friends or the community</li>
+      <li><strong>Get your cards</strong> — one player is the "Card Czar" each round</li>
+      <li><strong>Play your funniest white card</strong> to match the black card prompt</li>
+      <li><strong>The Czar picks the winner</strong> — that player gets an Awesome Point!</li>
+      <li><strong>First to reach the score limit wins!</strong> 🏆</li>
     </ol>
+    <p style="margin: 0.75rem 0 0 0; font-size: 0.9rem;">💡 <strong>Pro tip:</strong> The funniest or most creative answer usually wins. Be terrible!</p>
   </div>
 
-  <details class="info-box" open>
-    <summary><strong>📖 About the Game</strong></summary>
-    <ul>
-      <li><strong>Players:</strong> 3-20 players recommended</li>
-      <li><strong>Game length:</strong> 15-45 minutes</li>
-      <li><strong>Mobile friendly:</strong> Works on phones and tablets</li>
-    </ul>
-  </details>
+  <!-- PRIVACY - short and sweet -->
+  <div class="privacy-note">
+    🔒 IPs logged for security only — gameplay stats are anonymous. <a href="privacy.html" style="color: var(--circle-accent);">Learn more</a>
+  </div>
 
-  <details class="info-box">
-    <summary><strong>💡 Tips</strong></summary>
-    <ul>
-      <li>Don't open the game in multiple tabs</li>
-      <li>Refresh if something looks wrong</li>
-      <li>Resize window if cards overlap</li>
-    </ul>
-  </details>
-
+  <!-- BUTTON -->
   <div style="text-align: center; margin: 1.5rem 0;">
-    <input type="button" class="btn-primary" value="🎮 Take me to the game!"
+    <input type="button" class="btn-primary" value="🎮 Let's Play →"
       onclick="window.location='game.jsp';" />
   </div>
 
+  <!-- FOOTER -->
   <p class="footer-text">
     Terrible People is a party game for The-Circle community, inspired by Cards Against Humanity.
     <br />
     <a href="https://github.com/the-game-stoner/Terrible-People">Source code</a> • 
-    <a href="license.html">License</a> • 
-    <a href="privacy.html">Privacy</a>
+    <a href="license.html">License</a>
   </p>
 </div>
 
