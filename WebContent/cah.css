@@ -393,12 +393,13 @@ h2, h3, h4 {
 
 #tabs {
   min-height: 100px;
-  width: 40%;
+  width: auto !important;
   height: 100%;
   border: 0px;
   position: absolute;
   bottom: 0;
   right: 14px;
+  left: 260px;
   background: var(--circle-panel2);
   border-radius: var(--circle-radius);
   border: 1px solid var(--circle-border);
@@ -1048,6 +1049,13 @@ dfn {
   overflow: hidden;
 }
 
+/* Force chat to be wider - override jQuery UI */
+#tabs {
+  left: 260px !important;
+  right: 14px !important;
+  width: calc(100% - 280px) !important;
+}
+
 /* ========== MOBILE RESPONSIVE STYLES ========== */
 
 @media (max-width: 768px) {
@@ -1152,6 +1160,7 @@ dfn {
     width: 100%;
     position: static;
     right: auto;
+    left: auto !important;
   }
 
   #bottom {
