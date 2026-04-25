@@ -115,7 +115,7 @@ boolean allowBlankCards = injector.getInstance(Key.get(new TypeLiteral<Boolean>(
     bottom: 0 !important;
     right: 14px !important;
     top: auto !important;
-    width: 40% !important;
+    width: 80% !important;
   }
   
   #info_area {
