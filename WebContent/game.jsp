@@ -98,10 +98,31 @@ boolean allowBlankCards = injector.getInstance(Key.get(new TypeLiteral<Boolean>(
     transition: opacity 0.3s ease;
   }
   
-  /* FORCE CHAT HEIGHT - compact */
+  /* FORCE CHAT TO BOTTOM - COMPACT */
   #bottom {
+    position: fixed !important;
+    bottom: 0 !important;
+    top: auto !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
     height: 140px !important;
-    top: 563px !important;
+    z-index: 100 !important;
+  }
+  
+  #tabs {
+    position: absolute !important;
+    bottom: 0 !important;
+    right: 14px !important;
+    top: auto !important;
+    width: 40% !important;
+  }
+  
+  #info_area {
+    position: absolute !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    top: auto !important;
   }
   
   .log {
@@ -133,6 +154,10 @@ boolean allowBlankCards = injector.getInstance(Key.get(new TypeLiteral<Boolean>(
   .log div {
     margin-bottom: 3px !important;
     padding: 2px 5px !important;
+  }
+  
+  #tab-global {
+    width: 100% !important;
   }
 </style>
 </head>
