@@ -22,9 +22,10 @@ WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWIS
 WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 --%>
 <%--
-Index page.
+Index page - cleaned and modernized for The-Circle theme.
 
 @author Andy Janata (ajanata@socialgamer.net)
+@modified for The-Circle community
 --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
@@ -32,8 +33,56 @@ Index page.
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Terrible People</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
+<title>Terrible People — A party game for The-Circle community</title>
 <link rel="stylesheet" type="text/css" href="cah.css" media="screen" />
+<style>
+  /* Additional inline tweaks for welcome page */
+  .welcome-container {
+    animation: fadeIn 0.6s ease-out;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .info-box {
+    transition: all 0.2s ease;
+  }
+  
+  .info-box:hover {
+    border-color: var(--circle-accent);
+    transform: translateX(4px);
+  }
+  
+  details.info-box summary {
+    transition: color 0.2s ease;
+  }
+  
+  .btn-primary {
+    animation: pulse 2s infinite;
+  }
+  
+  @keyframes pulse {
+    0%, 100% {
+      box-shadow: 0 0 0 0 rgba(9, 255, 3, 0.4);
+    }
+    50% {
+      box-shadow: 0 0 0 8px rgba(9, 255, 3, 0);
+    }
+  }
+  
+  .btn-primary:hover {
+    animation: none;
+  }
+</style>
 </head>
 <body>
 
@@ -44,76 +93,61 @@ Index page.
   </h1>
   <h3>A party game for The-Circle community.</h3>
 
+  <!-- Privacy notice - streamlined -->
   <div class="info-box">
     <p>
-      Your computer's IP address will <strong>always</strong> be logged when you load the game client.
-      It is not tied in any way to your username, except possibly if a server error occurs. Gameplay
-      results are logged permanently, but without information identifying you.
+      🔒 Your IP address is logged for security and debugging. Gameplay results are logged 
+      anonymously. No personal information is tied to your username.
     </p>
   </div>
 
-  <div class="info-box">
-    <p><strong>Recent Changes:</strong></p>
-    <ul>
-      <li>3 September 2018: All chat and fill-in-the-blank cards have been disabled.
-      <a href="https://gist.githubusercontent.com/ajanata/07ededdb584f7bb77a8c7191d3a4bbcc/raw/e76faacc19c2bb598a1a8fd94b9ebcb29c5502e0">
-      Learn why.</a></li>
-      <li><a href="changelog.html">Older entries.</a></li>
-    </ul>
+  <!-- Quick start guide - new addition -->
+  <div class="info-box" style="background: var(--circle-accent-soft); border-color: var(--circle-accent);">
+    <p style="margin: 0; font-weight: bold;">✨ Quick Start:</p>
+    <ol style="margin: 0.5rem 0 0 1.25rem; padding: 0;">
+      <li>Enter a nickname</li>
+      <li>Join an existing game or create your own</li>
+      <li>Wait for the Card Czar to start the round</li>
+      <li>Pick the funniest white card to win Awesome Points!</li>
+    </ol>
   </div>
 
-  <details class="info-box">
-    <summary><strong>Known Issues</strong></summary>
+  <!-- Game info - condensed -->
+  <details class="info-box" open>
+    <summary><strong>📖 About the Game</strong></summary>
     <ul>
-      <li><strong>Do not open the game more than once in the same browser.</strong> Neither instance
-      will receive all data from the server, and you will not be able to play.</li>
-      <li>This game was extensively tested in <a href="http://google.com/chrome">Google Chrome</a>.
-      It should work in all recent versions of major browsers, but it may not look 100% as intended.</li>
-      <li>You may not always see your card in the top area after you play it, but it has been played.</li>
-      <li>If you refresh in the game, an error will pop up in the log briefly before the refresh
-      happens. It is safe to ignore.</li>
-      <li>Interface elements may not be perfectly sized and positioned immediately after loading the
-      page if your window is sufficiently small. Resize the window to fix.</li>
-      <li>A player joining the game in progress may have a slightly incorrect representation of the
-      game state until the next round begins.</li>
+      <li><strong>Players:</strong> 3-20 players recommended</li>
+      <li><strong>Game length:</strong> 15-45 minutes depending on score limit</li>
+      <li><strong>Cards:</strong> Official Cards Against Humanity deck + community packs</li>
+      <li><strong>Mobile friendly:</strong> Works on phones, tablets, and desktops</li>
     </ul>
   </details>
 
+  <!-- Tips - collapsed by default -->
   <details class="info-box">
-    <summary><strong>Current Limitations</strong></summary>
+    <summary><strong>💡 Tips & Known Issues</strong></summary>
     <ul>
-      <li>Support for Black Cards with "pick" and/or "draw" annotations is rudimentary.</li>
-      <li>You cannot un-do your first (or second) card: Once it's played, it's played.</li>
-      <li>When you have a lot of players, cards may overlap your hand. Resize the window to help.</li>
-      <li>You can't bet Awesome Points to play another card.</li>
+      <li><strong>Don't open the game in multiple tabs</strong> — it breaks real-time updates.</li>
+      <li><strong>Refresh if something looks wrong</strong> — the game will recover your state.</li>
+      <li><strong>Resize window if cards overlap</strong> — the layout adjusts dynamically.</li>
+      <li>Works best in Chrome, Firefox, Safari, and Edge.</li>
     </ul>
   </details>
 
-  <div class="info-box">
-    <p><strong>Future enhancements:</strong></p>
-    <ul>
-      <li>There may be an option to display who played every card.</li>
-      <li>A registration system and long-term statistics tracking may be added at some point.</li>
-    </ul>
-  </div>
-
-  <p>
-    If the game seems to be in a weird state, refresh the page and it should take you back to where
-    you were. Please report bugs on
-    <a href="https://github.com/ajanata/PretendYoureXyzzy/issues/new">GitHub</a>.
-  </p>
-
+  <!-- Call to action -->
   <div class="button-container">
-    <input type="button" class="btn-primary" value="Take me to the game!"
+    <input type="button" class="btn-primary" value="🎮 Take me to the game!"
       onclick="window.location='game.jsp';" />
   </div>
 
+  <!-- Footer -->
   <p class="footer-text">
-    Terrible People is a party game for The-Circle community, inspired by Cards Against Humanity,
-    available at <a href="http://www.cardsagainsthumanity.com/">cardsagainsthumanity.com</a>.
-    This web version is in no way endorsed or sponsored by cardsagainsthumanity.com.
-    Source code available on <a href="https://github.com/ajanata/PretendYoureXyzzy">GitHub</a>.
-    See <a href="license.html">full license information</a>.
+    Terrible People is a party game for The-Circle community, inspired by Cards Against Humanity.
+    This web version is not endorsed by Cards Against Humanity, LLC.
+    <br />
+    <a href="https://github.com/the-game-stoner/Terrible-People">Source code</a> • 
+    <a href="license.html">License</a> • 
+    <a href="privacy.html">Privacy</a>
   </p>
 </div>
 
