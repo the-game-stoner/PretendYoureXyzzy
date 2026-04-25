@@ -97,68 +97,6 @@ boolean allowBlankCards = injector.getInstance(Key.get(new TypeLiteral<Boolean>(
   #canvas, #bottom {
     transition: opacity 0.3s ease;
   }
-  
-  /* FORCE CHAT TO BOTTOM - COMPACT */
-  #bottom {
-    position: fixed !important;
-    bottom: 0 !important;
-    top: auto !important;
-    left: 0 !important;
-    right: 0 !important;
-    width: 100% !important;
-    height: 140px !important;
-    z-index: 100 !important;
-  }
-  
-  #tabs {
-    position: absolute !important;
-    bottom: 0 !important;
-    right: 14px !important;
-    top: auto !important;
-    width: 85% !important;
-  }
-  
-  #info_area {
-    position: absolute !important;
-    bottom: 0 !important;
-    left: 0 !important;
-    top: auto !important;
-  }
-  
-  .log {
-    height: 200px !important;
-    padding: 4px 6px !important;
-    font-size: 14px !important;
-    line-height: 1.3 !important;
-  }
-  
-  .chat {
-    padding: 5px 6px !important;
-    font-size: 14px !important;
-    margin: 4px 0 4px 6px !important;
-    width: calc(100% - 58px) !important;
-  }
-  
-  .chat_submit {
-    padding: 4px 8px !important;
-    font-size: 10px !important;
-    margin: 4px 6px 4px 0 !important;
-    width: 38px !important;
-  }
-  
-  #tabs .ui-tabs-tab a {
-    padding: 6px 10px !important;
-    font-size: 0.8rem !important;
-  }
-  
-  .log div {
-    margin-bottom: 3px !important;
-    padding: 2px 5px !important;
-  }
-  
-  #tab-global {
-    width: 100% !important;
-  }
 </style>
 </head>
 <body id="gamebody">
