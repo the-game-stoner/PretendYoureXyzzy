@@ -373,6 +373,7 @@ h2, h3, h4 {
   position: absolute;
   top: 543px;
   min-height: 100px;
+  background: transparent;
 }
 
 #info_area {
@@ -394,10 +395,47 @@ h2, h3, h4 {
   position: absolute;
   bottom: 0px;
   right: 14px;
+  background: var(--circle-panel2);
+  border-radius: var(--circle-radius);
+  border: 1px solid var(--circle-border);
+  overflow: hidden;
+  backdrop-filter: blur(8px);
 }
 
 #tabs .ui-widget {
   font-height: 16px !important;
+}
+
+#tabs .ui-tabs-nav {
+  background: var(--circle-panel);
+  border-bottom: 1px solid var(--circle-border);
+  padding: 0;
+  margin: 0;
+}
+
+#tabs .ui-tabs-tab {
+  background: transparent;
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+#tabs .ui-tabs-tab a {
+  color: var(--circle-muted);
+  font-size: 0.9rem;
+  padding: 10px 16px;
+  display: inline-block;
+  transition: all 0.2s ease;
+}
+
+#tabs .ui-tabs-tab.ui-tabs-active a {
+  color: var(--circle-accent);
+  border-bottom: 2px solid var(--circle-accent);
+}
+
+#tabs .ui-tabs-tab a:hover {
+  color: var(--circle-accent);
+  background: var(--circle-accent-soft);
 }
 
 .tab-button {
@@ -428,21 +466,52 @@ h2, h3, h4 {
 }
 
 .log {
-  width: 100%;
-  height: 198px;
-  border-style: none solid solid none;
-  border-color: var(--circle-border);
-  border-width: 1px;
-  position: absolute;
-  bottom: 18px;
-  right: 0px;
-  overflow-y: scroll;
-  min-height: 43px;
-  font-size: 14px;
-  font-family: ui-monospace, monospace;
-  background: var(--circle-panel2);
+  background: var(--circle-panel);
+  border: 1px solid var(--circle-border);
   border-radius: 12px;
-  padding: 8px;
+  padding: 12px;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--circle-text);
+  height: 180px;
+  overflow-y: auto;
+  width: auto;
+  position: relative;
+  bottom: auto;
+  right: auto;
+}
+
+.log div {
+  margin-bottom: 6px;
+  padding: 4px 8px;
+  border-radius: 8px;
+  transition: background 0.1s ease;
+}
+
+.log div:hover {
+  background: var(--circle-accent-soft);
+}
+
+.log .chat_connect,
+.log .chat_quit {
+  color: var(--circle-muted);
+  font-style: italic;
+  font-size: 0.85rem;
+}
+
+.log .chat_me {
+  color: var(--circle-accent);
+  font-style: italic;
+}
+
+.log .chat_notice {
+  color: #ffaa44;
+  font-weight: 500;
+}
+
+.log .chat_error {
+  color: #ff5555;
 }
 
 #tab-preferences input[type='button'] {
@@ -451,44 +520,103 @@ h2, h3, h4 {
 
 #tab-preferences, #tab-gamelist-filters {
   overflow-y: auto;
-}
-
-.chat {
-  border: 1px solid var(--circle-border);
-  left: -1px;
-  bottom: 0px;
-  height: 17px;
-  position: absolute;
-  padding: 0px;
-  width: 90%;
-  font-family: ui-sans-serif, system-ui, sans-serif;
-  font-size: 12pt;
-  background: var(--circle-panel);
+  background: var(--circle-panel2);
+  padding: 12px;
+  border-radius: 12px;
   color: var(--circle-text);
-  border-radius: 40px;
-  padding-left: 12px;
 }
 
-.chat_submit {
-  width: 50px;
-  height: 20px;
-  position: absolute;
-  right: -1px;
-  bottom: -1px;
-  margin: 0px;
-  padding: 0px;
-  font-size: 12px;
+#tab-preferences label,
+#tab-gamelist-filters label {
+  color: var(--circle-text);
+}
+
+#tab-preferences input[type="text"],
+#tab-preferences textarea,
+#tab-gamelist-filters select {
+  background: var(--circle-panel);
+  border: 1px solid var(--circle-border);
+  border-radius: 8px;
+  color: var(--circle-text);
+  padding: 6px 10px;
+}
+
+#tab-preferences input[type="button"] {
   background: var(--circle-panel);
   border: 1px solid var(--circle-border);
   border-radius: 40px;
   color: var(--circle-text);
+  padding: 6px 14px;
   cursor: pointer;
+  transition: all 0.2s ease;
 }
 
-.chat_submit:hover {
+#tab-preferences input[type="button"]:hover {
   background: var(--circle-accent-soft);
   border-color: var(--circle-accent);
   color: var(--circle-accent);
+}
+
+.cardset_filter_list select {
+  background: var(--circle-panel);
+  border: 1px solid var(--circle-border);
+  border-radius: 8px;
+  color: var(--circle-text);
+}
+
+.cardset_filter_list select option {
+  background: var(--circle-bg);
+}
+
+fieldset legend {
+  color: var(--circle-accent);
+  font-weight: 500;
+}
+
+.chat {
+  background: var(--circle-panel);
+  border: 1px solid var(--circle-border);
+  border-radius: 40px;
+  padding: 10px 16px;
+  font-size: 14px;
+  color: var(--circle-text);
+  width: calc(100% - 70px);
+  margin: 8px 0 8px 8px;
+  transition: all 0.2s ease;
+  position: relative;
+  left: auto;
+  bottom: auto;
+  height: auto;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+}
+
+.chat:focus {
+  outline: none;
+  border-color: var(--circle-accent);
+  box-shadow: 0 0 0 3px var(--circle-accent-soft);
+}
+
+.chat_submit {
+  background: var(--circle-accent);
+  border: none;
+  border-radius: 40px;
+  padding: 8px 16px;
+  font-size: 13px;
+  font-weight: bold;
+  color: #000;
+  cursor: pointer;
+  margin: 8px 8px 8px 0;
+  width: 50px;
+  transition: all 0.2s ease;
+  position: relative;
+  right: auto;
+  bottom: auto;
+  height: auto;
+}
+
+.chat_submit:hover {
+  background: #0cdd00;
+  transform: scale(1.02);
 }
 
 span.error {
@@ -1072,11 +1200,14 @@ dfn {
   }
 
   .chat {
-    width: 85%;
+    width: calc(100% - 70px);
+    font-size: 13px;
+    padding: 8px 14px;
   }
 
   .log {
     height: 150px;
+    font-size: 13px;
   }
 }
 
