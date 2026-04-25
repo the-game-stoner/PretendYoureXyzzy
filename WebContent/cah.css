@@ -389,7 +389,7 @@ h2, h3, h4 {
 
 #tabs {
   min-height: 100px;
-  width: 50%;
+  width: 38%;
   height: 100%;
   border: 0px;
   position: absolute;
@@ -422,8 +422,8 @@ h2, h3, h4 {
 
 #tabs .ui-tabs-tab a {
   color: var(--circle-muted);
-  font-size: 0.9rem;
-  padding: 10px 16px;
+  font-size: 0.85rem;
+  padding: 8px 12px;
   display: inline-block;
   transition: all 0.2s ease;
 }
@@ -439,7 +439,7 @@ h2, h3, h4 {
 }
 
 .tab-button {
-  font-size: 14px !important;
+  font-size: 13px !important;
 }
 
 .cardset_filter_list {
@@ -469,24 +469,26 @@ h2, h3, h4 {
   background: var(--circle-panel);
   border: 1px solid var(--circle-border);
   border-radius: 12px;
-  padding: 12px;
+  padding: 8px;
   font-family: ui-sans-serif, system-ui, sans-serif;
-  font-size: 14px;
-  line-height: 1.5;
+  font-size: 13px;
+  line-height: 1.4;
   color: var(--circle-text);
-  height: 180px;
+  height: 150px;
   overflow-y: auto;
   width: auto;
   position: relative;
   bottom: auto;
   right: auto;
+  box-sizing: border-box;
 }
 
 .log div {
-  margin-bottom: 6px;
-  padding: 4px 8px;
-  border-radius: 8px;
+  margin-bottom: 4px;
+  padding: 3px 6px;
+  border-radius: 6px;
   transition: background 0.1s ease;
+  word-wrap: break-word;
 }
 
 .log div:hover {
@@ -497,7 +499,7 @@ h2, h3, h4 {
 .log .chat_quit {
   color: var(--circle-muted);
   font-style: italic;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
 }
 
 .log .chat_me {
@@ -577,17 +579,18 @@ fieldset legend {
   background: var(--circle-panel);
   border: 1px solid var(--circle-border);
   border-radius: 40px;
-  padding: 10px 16px;
-  font-size: 14px;
+  padding: 6px 12px;
+  font-size: 13px;
   color: var(--circle-text);
-  width: calc(100% - 70px);
-  margin: 8px 0 8px 8px;
+  width: calc(100% - 65px);
+  margin: 6px 0 6px 8px;
   transition: all 0.2s ease;
   position: relative;
   left: auto;
   bottom: auto;
   height: auto;
   font-family: ui-sans-serif, system-ui, sans-serif;
+  box-sizing: border-box;
 }
 
 .chat:focus {
@@ -600,18 +603,19 @@ fieldset legend {
   background: var(--circle-accent);
   border: none;
   border-radius: 40px;
-  padding: 8px 16px;
-  font-size: 13px;
+  padding: 6px 12px;
+  font-size: 12px;
   font-weight: bold;
   color: #000;
   cursor: pointer;
-  margin: 8px 8px 8px 0;
-  width: 50px;
+  margin: 6px 8px 6px 0;
+  width: 45px;
   transition: all 0.2s ease;
   position: relative;
   right: auto;
   bottom: auto;
   height: auto;
+  box-sizing: border-box;
 }
 
 .chat_submit:hover {
@@ -1200,14 +1204,14 @@ dfn {
   }
 
   .chat {
-    width: calc(100% - 70px);
-    font-size: 13px;
-    padding: 8px 14px;
+    width: calc(100% - 65px);
+    font-size: 12px;
+    padding: 6px 10px;
   }
 
   .log {
-    height: 150px;
-    font-size: 13px;
+    height: 120px;
+    font-size: 12px;
   }
 }
 
