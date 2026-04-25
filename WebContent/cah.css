@@ -481,7 +481,7 @@ h2, h3, h4 {
   color: var(--circle-text);
   height: 85px;
   overflow-y: auto;
-  width: auto;
+  width: 100% !important;
   position: relative;
   bottom: auto;
   right: auto;
@@ -585,9 +585,9 @@ fieldset legend {
   border: 1px solid var(--circle-border);
   border-radius: 40px;
   padding: 4px 10px;
-  font-size: 11px;
+  font-size: 14px;
   color: var(--circle-text);
-  width: calc(100% - 58px);
+  width: calc(100% - 60px) !important;
   margin: 4px 0 4px 6px;
   transition: all 0.2s ease;
   position: relative;
@@ -626,6 +626,14 @@ fieldset legend {
 .chat_submit:hover {
   background: #0cdd00;
   transform: scale(1.02);
+}
+
+/* Force inner chat elements to respect parent width */
+#tab-global {
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+  overflow: hidden !important;
 }
 
 span.error {
