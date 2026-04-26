@@ -34,6 +34,11 @@
   --circle-shadow-sm: 0 18px 44px rgba(0, 0, 0, 0.35);
 }
 
+/* CRITICAL FIX: Ensure hidden elements STAY hidden until the script triggers */
+.hide {
+  display: none !important;
+}
+
 /* ========== WELCOME PAGE STYLES ========== */
 
 .welcome-container {
@@ -260,7 +265,6 @@ h2, h3, h4 {
 
 #canvas {
   height: 533px;
-  overflow: none;
   position: relative;
   width: 100%;
 }
@@ -363,7 +367,7 @@ h2, h3, h4 {
   color: var(--circle-muted);
 }
 
-/* ========== CHAT SECTION - FIXED SCALING ========== */
+/* ========== CHAT SECTION ========== */
 
 #bottom {
   width: 100%;
@@ -377,6 +381,11 @@ h2, h3, h4 {
   display: flex;
   padding: 0 10px 10px 10px;
   box-sizing: border-box;
+}
+
+/* Only apply flex when visible (not hidden) */
+#bottom:not(.hide) {
+  display: flex !important;
 }
 
 #info_area {
@@ -518,10 +527,6 @@ h2, h3, h4 {
 .whitecard {
   background: var(--circle-panel);
   color: var(--circle-text);
-}
-
-.hide {
-  display: none;
 }
 
 .game {
@@ -1073,6 +1078,11 @@ span.debug, span.admin {
     height: auto;
     margin-top: 20px;
     flex-direction: column;
+  }
+
+  /* Again, only apply block/flex when visible */
+  #bottom:not(.hide) {
+    display: block !important;
   }
 
   #canvas {
