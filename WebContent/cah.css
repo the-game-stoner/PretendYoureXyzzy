@@ -1,444 +1,230 @@
-:root {
-  --circle-bg: #070a0f;
-  --circle-panel: rgba(255, 255, 255, 0.06);
-  --circle-panel2: rgba(255, 255, 255, 0.04);
-  --circle-border: rgba(255, 255, 255, 0.12);
-  --circle-text: rgba(255, 255, 255, 0.92);
-  --circle-muted: rgba(255, 255, 255, 0.68);
-  --circle-accent: #09ff03;
-  --circle-accent-soft: rgba(9, 255, 3, 0.14);
-  --circle-radius: 18px;
-  --circle-shadow: 0 24px 70px rgba(0, 0, 0, 0.45);
-}
+<%--
+Copyright (c) 2012-2020, Andy Janata | Modified for Terrible People (The-Circle)
+--%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page import="com.google.inject.Injector, com.google.inject.Key, com.google.inject.TypeLiteral" %>
+<%@ page import="javax.servlet.http.HttpSession, net.socialgamer.cah.RequestWrapper, net.socialgamer.cah.StartupUtils" %>
+<%@ page import="net.socialgamer.cah.data.GameOptions, net.socialgamer.cah.CahModule, net.socialgamer.cah.CahModule.*" %>
+<%
+    HttpSession hSession = request.getSession(true);
+    ServletContext servletContext = pageContext.getServletContext();
+    Injector injector = (Injector) servletContext.getAttribute(StartupUtils.INJECTOR);
+    boolean allowBlankCards = injector.getInstance(Key.get(new TypeLiteral<Boolean>(){}, AllowBlankCards.class));
+%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Terrible People — The-Circle</title>
+    
+    <link rel="stylesheet" type="text/css" href="cah.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="jquery-ui.min.css" media="screen" />
 
-* {
-  box-sizing: border-box;
-}
+    <style>
+        /* Essential layout fixes to keep the game from breaking with your new CSS */
+        #main_holder { width: 100%; height: 100%; }
+        .game { width: 100%; height: 100%; position: relative; }
+        
+        /* Force the left side (black card) and right side (played cards) to behave */
+        .game_left_side { 
+            width: 220px !important; 
+            float: left; 
+            padding: 10px;
+        }
+        .game_right_side { 
+            margin-left: 230px !important; 
+            min-height: 250px;
+            padding: 10px;
+        }
+        
+        /* Ensure the hand appears below the cards */
+        .game_hand { 
+            clear: both; 
+            width: 100%; 
+            margin-top: 20px; 
+            border-top: 1px solid var(--circle-border);
+        }
 
-body {
-  background: radial-gradient(900px 500px at 15% 10%, rgba(9, 255, 3, 0.16), transparent 62%),
-              linear-gradient(var(--circle-bg), var(--circle-bg));
-  background-attachment: fixed;
-  color: var(--circle-text);
-  font-family: system-ui, -apple-system, sans-serif;
-  font-size: 14px;
-  margin: 0;
-  min-height: 100vh;
-}
+        /* Fix your card hover and float for the game engine */
+        .card {
+            float: left !important;
+            display: block !important;
+        }
 
-/* Welcome Page */
-.welcome-container {
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 2rem 1.5rem;
-  text-align: center;
-}
+        /* Nickbox tweaks for the specific JSP logic */
+        #nickbox input { margin-bottom: 10px; }
+        #nickbox_error { display: block; margin-bottom: 10px; font-weight: bold; }
+    </style>
 
-.welcome-container h1 {
-  font-size: 2.5rem;
-  margin-bottom: 0.5rem;
-}
+    <script src="js/jquery-1.11.3.min.js"></script>
+    <script src="js/jquery-migrate-1.2.1.js"></script>
+    <script src="js/jquery.cookie.js"></script>
+    <script src="js/jquery.json.js"></script>
+    <script src="js/QTransform.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
+    <script src="js/cah.js"></script>
+    <script src="js/cah.config.js"></script>
+    <script src="js/cah.constants.js"></script>
+    <script src="js/cah.log.js"></script>
+    <script src="js/cah.gamelist.js"></script>
+    <script src="js/cah.card.js"></script>
+    <script src="js/cah.cardset.js"></script>
+    <script src="js/cah.game.js"></script>
+    <script src="js/cah.preferences.js"></script>
+    <script src="js/cah.longpoll.js"></script>
+    <script src="js/cah.longpoll.handlers.js"></script>
+    <script src="js/cah.ajax.js"></script>
+    <script src="js/cah.ajax.builder.js"></script>
+    <script src="js/cah.ajax.handlers.js"></script>
+    <script src="js/cah.app.js"></script>
+</head>
 
-.welcome-container h3 {
-  font-size: 1.1rem;
-  color: var(--circle-muted);
-  font-weight: normal;
-  margin-bottom: 2rem;
-}
+<body id="gamebody">
 
-.info-box {
-  background: var(--circle-panel);
-  border: 1px solid var(--circle-border);
-  border-radius: var(--circle-radius);
-  padding: 1rem;
-  margin-bottom: 1.5rem;
-}
+<div id="welcome" class="welcome-container">
+    <h1>🎉 Terrible People</h1>
+    <h3>A party game for The-Circle community</h3>
 
-/* Nickname Form */
-.nickbox {
-  background: var(--circle-panel2);
-  border: 1px solid var(--circle-border);
-  border-radius: var(--circle-radius);
-  padding: 1.5rem;
-  text-align: left;
-}
+    <div class="info-box">
+        <p>✨ Choose a nickname and join the fun. No registration required!</p>
+    </div>
 
-.nickbox label {
-  display: block;
-  font-size: 0.9rem;
-  font-weight: 500;
-  margin-bottom: 0.3rem;
-  margin-top: 1rem;
-}
+    <div id="nickbox" class="nickbox">
+        <label for="nickname">🎭 Your Nickname</label>
+        <input type="text" id="nickname" maxlength="30" placeholder="e.g., FunnyGuy" />
+        
+        <input type="password" id="idcode" maxlength="100" disabled="disabled" class="hide" />
+        
+        <span id="nickbox_error" class="error"></span>
+        
+        <div class="button-container">
+            <input type="button" class="btn-primary" id="nicknameconfirm" value="🎮 Enter Game →" />
+        </div>
+    </div>
 
-.nickbox label:first-of-type {
-  margin-top: 0;
-}
+    <p class="footer-text">
+        Inspired by Cards Against Humanity.<br />
+        <a href="https://github.com/the-game-stoner/Terrible-People">Source code</a> • 
+        <a href="license.html">License</a> • 
+        <a href="privacy.html">Privacy</a>
+    </p>
+</div>
 
-.nickbox input[type="text"],
-.nickbox input[type="password"] {
-  width: 100%;
-  background: var(--circle-panel);
-  border: 1px solid var(--circle-border);
-  border-radius: 12px;
-  padding: 12px;
-  color: var(--circle-text);
-  font-size: 1rem;
-}
+<div id="canvas" class="hide">
+    <div id="menubar">
+        <div id="menubar_left">
+            <input type="button" id="refresh_games" class="hide" value="Refresh Games" />
+            <input type="button" id="create_game" class="hide" value="Create Game" />
+            <input type="text" id="filter_games" class="hide" placeholder="Filter games" />
+            <input type="button" id="leave_game" class="hide" value="Leave Game" />
+            <input type="button" id="start_game" class="hide" value="Start Game" />
+        </div>
+        <div id="menubar_right">
+            Timer: <span id="current_timer">0</span> sec
+            <input type="button" id="view_cards" value="View Cards" onclick="window.open('viewcards.jsp', 'viewcards');" />
+            <input type="button" id="logout" value="Log out" />
+        </div>
+    </div>
+    <div id="main">
+        <div id="game_list" class="hide"></div>
+        <div id="main_holder"></div>
+    </div>
+</div>
 
-.nickbox input:focus {
-  outline: none;
-  border-color: var(--circle-accent);
-  box-shadow: 0 0 0 3px var(--circle-accent-soft);
-}
+<div id="bottom" class="hide">
+    <div id="info_area"></div>
+    <div id="tabs">
+        <ul>
+            <li><a href="#tab-preferences">Preferences</a></li>
+            <li><a href="#tab-gamelist-filters">Filters</a></li>
+            <li><a href="#tab-global">Global Chat</a></li>
+        </ul>
+        <div id="tab-preferences">
+            <input type="button" value="Save" onclick="cah.Preferences.save();" />
+            <label><input type="checkbox" id="hide_connect_quit" /> Hide connect/quit events</label>
+            <textarea id="ignore_list" placeholder="Ignore list..."></textarea>
+        </div>
+        <div id="tab-gamelist-filters">
+            <fieldset>
+                <legend>Card set filters</legend>
+                <select id="cardsets_banned" multiple></select>
+                <select id="cardsets_neutral" multiple></select>
+                <select id="cardsets_required" multiple></select>
+            </fieldset>
+        </div>
+        <div id="tab-global">
+            <div class="log"></div>
+            <input type="text" class="chat" maxlength="200" />
+            <input type="button" class="chat_submit" value="Chat" />
+        </div>
+    </div>
+</div>
 
-.nickbox a {
-  display: inline-block;
-  font-size: 0.8rem;
-  color: var(--circle-accent);
-  margin-top: 0.5rem;
-  text-decoration: none;
-}
+<div class="hide">
+    <div id="gamelist_lobby_template" class="gamelist_lobby">
+        <div class="gamelist_lobby_left">
+            <h3><span class="gamelist_lobby_host"></span>'s Game</h3>
+            <div><strong>Players:</strong> <span class="gamelist_lobby_player_count"></span>/<span class="gamelist_lobby_max_players"></span></div>
+        </div>
+        <div class="gamelist_lobby_right">
+            <input type="button" class="gamelist_lobby_join" value="Join" />
+        </div>
+    </div>
 
-.nickbox a:hover {
-  text-decoration: underline;
-}
+    <div id="black_up_template" class="card blackcard">
+        <span class="card_text"></span>
+        <div class="logo"><div class="logo_text">Terrible People</div></div>
+        <div class="card_metadata"><div class="pick hide">PICK <div class="card_number"></div></div></div>
+    </div>
 
-.button-container {
-  text-align: center;
-  margin-top: 1.5rem;
-}
+    <div id="white_up_template" class="card whitecard">
+        <span class="card_text"></span>
+        <div class="logo"><div class="logo_text">Terrible People</div></div>
+    </div>
 
-.btn-primary {
-  background: var(--circle-accent);
-  border: none;
-  border-radius: 40px;
-  padding: 12px 24px;
-  font-size: 1rem;
-  font-weight: bold;
-  color: #000;
-  cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s;
-}
+    <div id="game_template" class="game">
+        <div class="game_top">
+            <input type="button" class="game_show_options" value="Game Options" />
+            <div class="game_message" role="status">Waiting...</div>
+        </div>
+        <div class="game_main_box" style="height: 400px;">
+            <div class="game_left_side">
+                <div class="game_black_card"></div>
+                <input type="button" class="confirm_card" value="Confirm Selection" />
+            </div>
+            <div class="game_options"></div>
+            <div class="game_right_side hide">
+                <div class="game_white_cards game_right_side_cards"></div>
+            </div>
+        </div>
+        <div class="game_hand"><div class="game_hand_cards"></div></div>
+    </div>
 
-.btn-primary:hover {
-  transform: scale(1.02);
-  box-shadow: 0 0 20px rgba(9, 255, 3, 0.3);
-}
+    <div id="scoreboard_template" class="scoreboard"></div>
+    <div id="scorecard_template" class="scorecard">
+        <span class="scorecard_player"></span>
+        <span class="scorecard_points"><span class="scorecard_score">0</span> pts</span>
+    </div>
 
-.footer-text {
-  font-size: 11px;
-  color: var(--circle-muted);
-  text-align: center;
-  margin-top: 2rem;
-  border-top: 1px solid var(--circle-border);
-  padding-top: 1.5rem;
-}
+    <div class="game_options" id="game_options_template">
+        <fieldset>
+            <legend>Game Options</legend>
+            Score: <select id="score_limit_template" class="score_limit">
+                <% for (int i = injector.getInstance(Key.get(Integer.class, MinScoreLimit.class)); i <= injector.getInstance(Key.get(Integer.class, MaxScoreLimit.class)); i++) { %>
+                    <option <%=(i == injector.getInstance(Key.get(Integer.class, DefaultScoreLimit.class))) ? "selected" : "" %> value="<%=i%>"><%=i%></option>
+                <% } %>
+            </select>
+            Players: <select id="player_limit_template" class="player_limit">
+                <% for (int i = injector.getInstance(Key.get(Integer.class, MinPlayerLimit.class)); i <= injector.getInstance(Key.get(Integer.class, MaxPlayerLimit.class)); i++) { %>
+                    <option <%= i == injector.getInstance(Key.get(Integer.class, DefaultPlayerLimit.class)) ? "selected" : "" %> value="<%=i%>"><%=i%></option>
+                <% } %>
+            </select>
+            <div class="card_sets"><span class="base_card_sets"></span><span class="extra_card_sets"></span></div>
+        </fieldset>
+    </div>
+</div>
 
-.footer-text a {
-  color: var(--circle-accent);
-}
-
-/* Game Interface */
-#gamebody {
-  overflow: hidden;
-}
-
-#menubar {
-  background: var(--circle-panel2);
-  border-bottom: 1px solid var(--circle-border);
-  backdrop-filter: blur(10px);
-  padding: 0.5rem;
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-}
-
-#menubar input, #menubar button {
-  background: var(--circle-panel);
-  border: 1px solid var(--circle-border);
-  border-radius: 20px;
-  padding: 4px 12px;
-  color: var(--circle-text);
-  cursor: pointer;
-}
-
-#menubar input:hover {
-  background: var(--circle-accent-soft);
-  border-color: var(--circle-accent);
-}
-
-#canvas {
-  height: calc(100vh - 140px);
-  overflow: auto;
-  padding: 0.5rem;
-}
-
-/* Game Lobby */
-.gamelist_lobby {
-  background: var(--circle-panel);
-  border: 1px solid var(--circle-border);
-  border-radius: var(--circle-radius);
-  width: calc(50% - 8px);
-  min-width: 300px;
-  float: left;
-  margin: 4px;
-  padding: 0.75rem;
-  transition: transform 0.2s;
-}
-
-.gamelist_lobby:hover {
-  border-color: var(--circle-accent);
-  transform: translateY(-2px);
-}
-
-.gamelist_lobby_left {
-  float: left;
-  width: 75%;
-}
-
-.gamelist_lobby_right {
-  float: right;
-  width: 23%;
-  text-align: center;
-}
-
-.gamelist_lobby_join, .gamelist_lobby_spectate {
-  width: 100%;
-  margin: 4px 0;
-  padding: 6px;
-  background: var(--circle-panel2);
-  border: 1px solid var(--circle-border);
-  border-radius: 20px;
-  color: var(--circle-text);
-  cursor: pointer;
-}
-
-.gamelist_lobby_join:hover, .gamelist_lobby_spectate:hover {
-  background: var(--circle-accent-soft);
-  border-color: var(--circle-accent);
-  color: var(--circle-accent);
-}
-
-/* Chat Section */
-#bottom {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 140px;
-  background: transparent;
-  z-index: 100;
-}
-
-#info_area {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 260px;
-  height: 100%;
-  background: var(--circle-panel2);
-  border: 1px solid var(--circle-border);
-  border-radius: var(--circle-radius);
-  overflow-y: auto;
-}
-
-#tabs {
-  position: absolute;
-  bottom: 0;
-  left: 270px;
-  right: 10px;
-  height: 100%;
-  background: var(--circle-panel2);
-  border: 1px solid var(--circle-border);
-  border-radius: var(--circle-radius);
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-}
-
-#tabs .ui-tabs-nav {
-  background: var(--circle-panel);
-  border-bottom: 1px solid var(--circle-border);
-  padding: 0;
-  margin: 0;
-  display: flex;
-  list-style: none;
-}
-
-#tabs .ui-tabs-tab {
-  margin: 0;
-}
-
-#tabs .ui-tabs-tab a {
-  display: inline-block;
-  padding: 8px 16px;
-  color: var(--circle-muted);
-  text-decoration: none;
-  font-size: 13px;
-}
-
-#tabs .ui-tabs-tab.ui-tabs-active a {
-  color: var(--circle-accent);
-  border-bottom: 2px solid var(--circle-accent);
-}
-
-#tab-global {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  padding: 8px;
-  overflow: hidden;
-}
-
-.log {
-  flex: 1;
-  background: var(--circle-panel);
-  border: 1px solid var(--circle-border);
-  border-radius: 12px;
-  padding: 8px;
-  font-size: 13px;
-  overflow-y: auto;
-  margin-bottom: 8px;
-}
-
-.log div {
-  padding: 3px 6px;
-  border-radius: 6px;
-  margin-bottom: 2px;
-  word-wrap: break-word;
-}
-
-.log div:hover {
-  background: var(--circle-accent-soft);
-}
-
-.chat {
-  background: var(--circle-panel);
-  border: 1px solid var(--circle-border);
-  border-radius: 30px;
-  padding: 8px 14px;
-  font-size: 13px;
-  color: var(--circle-text);
-  width: calc(100% - 65px);
-  margin-right: 8px;
-}
-
-.chat:focus {
-  outline: none;
-  border-color: var(--circle-accent);
-  box-shadow: 0 0 0 2px var(--circle-accent-soft);
-}
-
-.chat_submit {
-  background: var(--circle-accent);
-  border: none;
-  border-radius: 30px;
-  padding: 8px 16px;
-  font-size: 13px;
-  font-weight: bold;
-  color: #000;
-  cursor: pointer;
-  width: 55px;
-  text-align: center;
-}
-
-.chat_submit:hover {
-  background: #0cdd00;
-  transform: scale(1.02);
-}
-
-/* Scoreboard */
-.scoreboard {
-  padding: 8px;
-}
-
-.scorecard {
-  background: var(--circle-panel);
-  border-radius: 10px;
-  padding: 6px 10px;
-  margin-bottom: 6px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-/* Cards */
-.card {
-  background: var(--circle-panel);
-  border: 1px solid var(--circle-border);
-  border-radius: var(--circle-radius);
-  width: 180px;
-  height: 180px;
-  padding: 12px;
-  float: left;
-  margin: 6px;
-  transition: transform 0.2s;
-  backdrop-filter: blur(4px);
-}
-
-.card:hover {
-  transform: translateY(-4px);
-  border-color: var(--circle-accent);
-}
-
-.blackcard {
-  border-top: 3px solid var(--circle-accent);
-}
-
-.whitecard {
-  background: var(--circle-panel);
-}
-
-.game_hand_cards {
-  display: flex;
-  flex-wrap: wrap;
-  overflow-x: auto;
-  padding: 8px;
-}
-
-.hide {
-  display: none;
-}
-
-.clear {
-  clear: both;
-}
-
-.error {
-  color: #ff5555;
-  font-size: 0.8rem;
-}
-
-/* Mobile */
-@media (max-width: 768px) {
-  #bottom {
-    position: static;
-    height: auto;
-    margin-top: 20px;
-  }
-  
-  #tabs {
-    position: static;
-    left: auto;
-    right: auto;
-    margin: 10px;
-  }
-  
-  #info_area {
-    position: static;
-    width: 100%;
-    margin-bottom: 10px;
-  }
-  
-  .gamelist_lobby {
-    width: 100%;
-  }
-  
-  .card {
-    width: 140px;
-    height: 140px;
-    font-size: 12px;
-  }
-}
+<div style="position:absolute; left:-99999px" role="alert" id="aria-notifications"></div>
+</body>
+</html>
