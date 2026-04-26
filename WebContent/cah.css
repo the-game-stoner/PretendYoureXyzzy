@@ -21,16 +21,36 @@
  * WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+/* ============================================
+   The-Circle.xyz Theme - Dark + Neon Green #09ff03
+   ============================================ */
+
+:root {
+  --circle-bg: #070a0f;
+  --circle-panel: rgba(255,255,255,0.06);
+  --circle-panel2: rgba(255,255,255,0.04);
+  --circle-border: rgba(255,255,255,0.12);
+  --circle-text: rgba(255,255,255,0.92);
+  --circle-muted: rgba(255,255,255,0.68);
+  --circle-accent: #09ff03;
+  --circle-accent-soft: rgba(9,255,3,0.14);
+  --circle-glow: rgba(9,255,3,0.25);
+}
+
 #gamebody {
   overflow: hidden;
 }
 
 body {
   min-height: 640px;
-  background: #eee;
-  color: #000;
+  background: var(--circle-bg);
+  color: var(--circle-text);
   font-size: 12px;
   margin: 0;
+  background: radial-gradient(900px 500px at 15% 10%, rgba(9,255,3,0.12), transparent 62%),
+              linear-gradient(var(--circle-bg), var(--circle-bg));
+  background-attachment: fixed;
+  font-family: ui-sans-serif, system-ui, 'Segoe UI', sans-serif;
 }
 
 .card, #game_list {
@@ -39,43 +59,16 @@ body {
 
 h2,h3,h4 {
   margin: 0 0 .25em;
+  color: var(--circle-text);
 }
-/*
-#browser {
-  background: rgba(0, 0, 0, .5);
-}
-
-#browser_inner {
-  border: 10px solid red;
-  padding: 15px;
-  background: white;
-  margin: 150px;
-  min-height: 150px;
-}
-
-#browser, #browser_inner {
-  position: absolute;
-  top: 0px;
-  right: 0px;
-  bottom: 0px;
-  left: 0px;
-  z-index: 9001;
-}
-
-#browser_ok {
-  margin: 15px;
-  position: absolute;
-  right: 0px;
-  bottom: 0px;
-}
-*/
 
 #menubar {
-  background:#555;
-  border-bottom:1px solid #333;
-  color:#fff;
+  background: var(--circle-panel);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--circle-border);
+  color: var(--circle-text);
   height: 25px;
-  padding:.5em;
+  padding: .5em;
 }
 
 #menubar_left {
@@ -87,9 +80,11 @@ h2,h3,h4 {
 }
 
 #nickbox {
-  border: 1px solid black;
+  border: 1px solid var(--circle-border);
+  background: var(--circle-panel2);
   display: inline;
   padding: 5px;
+  border-radius: 12px;
 }
 
 #canvas {
@@ -106,8 +101,9 @@ h2,h3,h4 {
 
 #welcome {
   padding: 1em;
+  max-width: 1200px;
+  margin: 0 auto;
 }
-
 
 #game_list {
   height: 100%;
@@ -116,13 +112,20 @@ h2,h3,h4 {
 }
 
 .gamelist_lobby {
-  background: #fff;
-  border-radius: .25em;
+  background: var(--circle-panel);
+  backdrop-filter: blur(4px);
+  border-radius: 22px;
   width: 575px;
   height: 175px;
   float: left;
-  border: 1px solid #ccc;
+  border: 1px solid var(--circle-border);
   margin: 4px;
+  transition: all 0.2s ease;
+}
+
+.gamelist_lobby:hover {
+  border-color: var(--circle-accent);
+  box-shadow: 0 0 12px var(--circle-glow);
 }
 
 .gamelist_lobby_left {
@@ -141,22 +144,38 @@ h2,h3,h4 {
 .gamelist_lobby_join {
   width: 100%;
   height: 75%;
-  border: 1px solid #aaa;
-  background: linear-gradient(#fff, #ddd) #ddd;
-  border-radius: .25em;
+  border: 1px solid var(--circle-border);
+  background: var(--circle-panel2);
+  color: var(--circle-text);
+  border-radius: 12px;
   text-transform: uppercase;
   font-weight: 700;
   white-space: normal;
+  transition: all 0.2s ease;
+}
+
+.gamelist_lobby_join:hover {
+  background: var(--circle-accent-soft);
+  border-color: var(--circle-accent);
+  color: var(--circle-accent);
 }
 
 .gamelist_lobby_spectate {
   width: 100%;
   height: 25%;
-  border: 1px solid #aaa;
-  background: linear-gradient(#fff, #ddd) #ddd;
-  border-radius: .25em;
+  border: 1px solid var(--circle-border);
+  background: var(--circle-panel2);
+  color: var(--circle-text);
+  border-radius: 12px;
   text-transform: uppercase;
   font-weight: 700;
+  transition: all 0.2s ease;
+}
+
+.gamelist_lobby_spectate:hover {
+  background: var(--circle-accent-soft);
+  border-color: var(--circle-accent);
+  color: var(--circle-accent);
 }
 
 .gamelist_lobby_status {
@@ -165,11 +184,11 @@ h2,h3,h4 {
 }
 
 .gamelist_lobby_status_joinable {
-  color: green;
+  color: var(--circle-accent);
 }
 
 .gamelist_lobby_status_unjoinable {
-  color: #c0c0c0;
+  color: var(--circle-muted);
 }
 
 #bottom {
@@ -186,7 +205,9 @@ h2,h3,h4 {
   position: absolute;
   bottom: 0px;
   min-height: 100px;
-  border: 1px solid #999;
+  border: 1px solid var(--circle-border);
+  background: var(--circle-panel2);
+  border-radius: 12px;
 }
 
 #tabs {
@@ -205,6 +226,7 @@ h2,h3,h4 {
 
 .tab-button {
   font-size: 14px !important;
+  color: var(--circle-text) !important;
 }
 
 .cardset_filter_list {
@@ -215,10 +237,15 @@ h2,h3,h4 {
 .cardset_filter_list select {
   height: 150px;
   width: 100%;
+  background: var(--circle-panel);
+  color: var(--circle-text);
+  border: 1px solid var(--circle-border);
+  border-radius: 8px;
 }
 
 .cardset_filter_list span {
   font-weight: bold;
+  color: var(--circle-text);
 }
 
 .cardset_filter_list .buttons {
@@ -229,7 +256,7 @@ h2,h3,h4 {
   width: 100%;
   height: 198px;
   border-style: none solid solid none;
-  border-color: black;
+  border-color: var(--circle-border);
   border-width: 1px;
   position: absolute;
   bottom: 18px;
@@ -238,6 +265,8 @@ h2,h3,h4 {
   min-height: 43px;
   font-size: 16px;
   font-family: serif;
+  background: var(--circle-panel2);
+  color: var(--circle-text);
 }
 
 #tab-preferences input[type='button'] {
@@ -249,7 +278,9 @@ h2,h3,h4 {
 }
 
 .chat {
-  border: 1px solid black;
+  border: 1px solid var(--circle-border);
+  background: var(--circle-panel);
+  color: var(--circle-text);
   left: -1px;
   bottom: 0px;
   height: 17px;
@@ -258,6 +289,7 @@ h2,h3,h4 {
   width: 90%;
   font-family: serif;
   font-size: 12pt;
+  border-radius: 8px;
 }
 
 .chat_submit {
@@ -269,46 +301,66 @@ h2,h3,h4 {
   margin: 0px;
   padding: 0px;
   font-size: 14px;
+  background: var(--circle-panel);
+  border: 1px solid var(--circle-border);
+  color: var(--circle-text);
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.chat_submit:hover {
+  background: var(--circle-accent-soft);
+  border-color: var(--circle-accent);
+  color: var(--circle-accent);
 }
 
 span.error {
-  color: red;
+  color: #ff4444;
 }
 
 span.debug, span.admin {
-  color: blue;
+  color: var(--circle-accent);
 }
 
 .card {
   position: relative;
   width: 200px;
   height: 200px;
-  border: 1px solid #999;
+  border: 1px solid var(--circle-border);
   padding: 15px;
   font-size: 15pt;
   float: left;
-  border-radius: .25em;
+  border-radius: 18px;
   -webkit-user-select: none;
   -khtml-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   -o-user-select: none;
   user-select: none;
+  transition: all 0.2s ease;
 }
 
 .blackcard {
-  background: #231f20;
-  color: white;
-  background-image:linear-gradient(#231f20,#231f20 75%, #333)
+  background: var(--circle-panel2);
+  color: var(--circle-text);
+  border-left: 5px solid var(--circle-accent) !important;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
 }
 
 .whitecard {
-  background: white;
-  color: #231f20;
+  background: var(--circle-panel);
+  color: var(--circle-text);
+  backdrop-filter: blur(8px);
 }
 
-.whitecard, .gamelist_lobby{
-  background-image: linear-gradient(#fff,#fff 75%,#f8f8f8);
+.whitecard:hover {
+  transform: translateY(-4px);
+  border-color: var(--circle-accent);
+  box-shadow: 0 0 18px rgba(9,255,3,0.2);
+}
+
+.whitecard, .gamelist_lobby {
+  background-image: none;
 }
 
 .cah {
@@ -332,6 +384,8 @@ span.debug, span.admin {
   position: absolute;
   bottom: 10px;
   right: 5px;
+  color: var(--circle-accent);
+  font-weight: bold;
 }
 
 .game_hand {
@@ -345,7 +399,7 @@ span.debug, span.admin {
 .game_hand_filter {
   height: 100%;
   position: relative;
-  background: rgba(192, 192, 192, .5);
+  background: rgba(0, 0, 0, 0.7);
   z-index: 100;
   text-align: center;
 }
@@ -355,8 +409,10 @@ span.debug, span.admin {
   top: 50%;
   font-size: 300%;
   margin-top: -30px;
-  background:#eee;
-  padding:.25em;
+  background: var(--circle-panel);
+  color: var(--circle-text);
+  padding: .25em;
+  border-radius: 12px;
 }
 
 .game_hand_cards {
@@ -382,7 +438,8 @@ span.debug, span.admin {
 
 .game_message {
   font-size: 150%;
-  font-weight:bold;
+  font-weight: bold;
+  color: var(--circle-accent);
 }
 
 .game_black_card_wrapper {
@@ -401,6 +458,20 @@ span.debug, span.admin {
   margin-top: 10px;
   width: 100%;
   z-index: 500;
+  background: var(--circle-accent-soft);
+  border: 1px solid var(--circle-accent);
+  color: var(--circle-accent);
+  border-radius: 100px;
+  padding: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.confirm_card:hover {
+  background: var(--circle-accent);
+  color: var(--circle-bg);
+  box-shadow: 0 0 12px var(--circle-glow);
 }
 
 .game_left_side {
@@ -417,8 +488,12 @@ span.debug, span.admin {
 }
 
 .game_options {
-  background: #eee;
+  background: var(--circle-panel);
+  backdrop-filter: blur(8px);
   z-index: 500;
+  border-radius: 18px;
+  padding: 15px;
+  border: 1px solid var(--circle-border);
 }
 
 .game_right_side_box {
@@ -438,11 +513,16 @@ span.debug, span.admin {
 }
 
 .game_white_cards_binder {
-  border: 3px solid silver;
+  border: 3px solid var(--circle-border);
   display: inline-block;
   margin-right: 4px;
   margin-bottom: 4px;
-  border-radius: .25em;
+  border-radius: 18px;
+  transition: all 0.2s ease;
+}
+
+.game_white_cards_binder:hover {
+  border-color: var(--circle-accent);
 }
 
 .card_holder {
@@ -463,23 +543,27 @@ span.debug, span.admin {
   height: 100%;
   position: absolute;
   overflow-y: scroll;
+  background: var(--circle-panel2);
+  border-radius: 12px;
 }
 
 .scorecard {
-  background:#fff;
+  background: var(--circle-panel);
   height: 36px;
-  padding:.25em .5em;
-  border-bottom: 1px solid #bbb;
+  padding: .25em .5em;
+  border-bottom: 1px solid var(--circle-border);
   font-size: 11pt;
+  color: var(--circle-text);
 }
 
 .scorecard:nth-child(even) {
-  background:#f8f8f8;
+  background: var(--circle-panel2);
 }
 
 .scorecard_status {
   float: right;
   margin-right: 5px;
+  color: var(--circle-accent);
 }
 
 .clear {
@@ -487,8 +571,8 @@ span.debug, span.admin {
 }
 
 .selected {
-  color: #fff;
-  background: #3c7fb1 !important;
+  color: var(--circle-bg) !important;
+  background: var(--circle-accent) !important;
 }
 
 .logo {
@@ -506,9 +590,8 @@ span.debug, span.admin {
   height: 22px;
 }
 
-
 .blackcard .logo_element {
-  border: 1px solid #231f20;
+  border: 1px solid var(--circle-border);
 }
 
 .logo_1 {
@@ -516,11 +599,11 @@ span.debug, span.admin {
 }
 
 .blackcard .logo_1 {
-  background: #57585a;
+  background: var(--circle-accent);
 }
 
 .whitecard .logo_1 {
-  background: #231f20;
+  background: var(--circle-accent);
 }
 
 .logo_2 {
@@ -528,11 +611,11 @@ span.debug, span.admin {
 }
 
 .blackcard .logo_2 {
-  background: #b2b3b7;
+  background: var(--circle-muted);
 }
 
 .whitecard .logo_2 {
-  background: #636366;
+  background: var(--circle-muted);
 }
 
 .logo_3 {
@@ -541,13 +624,13 @@ span.debug, span.admin {
 }
 
 .blackcard .logo_3 {
-  background: white;
-  color: black;
+  background: var(--circle-accent);
+  color: var(--circle-bg);
 }
 
 .whitecard .logo_3 {
-  background: #c7c8ca;
-  color: black;
+  background: var(--circle-accent);
+  color: var(--circle-bg);
 }
 
 .watermark_container {
@@ -561,6 +644,7 @@ span.debug, span.admin {
   font-weight: bold;
   left: 45px;
   bottom: 4px;
+  color: var(--circle-accent);
 }
 
 .card_metadata {
@@ -574,12 +658,12 @@ span.debug, span.admin {
   clear: both;
   font-weight: bold;
   font-size: 12pt;
+  color: var(--circle-accent);
 }
 
 .card_number {
   width: 20px;
   height: 20px;
-
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
   -o-border-radius: 10px;
@@ -587,36 +671,44 @@ span.debug, span.admin {
 }
 
 .blackcard .card_number {
-  background: white;
+  background: var(--circle-accent);
   display: inline-block;
-  color: #231f20;
+  color: var(--circle-bg);
   text-align: center;
 }
 
-/* TODO .whitecard .card_number ??? */
-
 .previous_round {
   z-index: 50;
-  border: 3px solid black;
+  border: 3px solid var(--circle-accent);
   width: 60%;
   height: 60%;
   position: absolute;
   top: 20%;
   left: 20%;
   padding: 5px;
+  background: var(--circle-panel);
+  backdrop-filter: blur(12px);
+  border-radius: 24px;
 }
 
 .previous_round_close {
   position: absolute;
   right: 0px;
+  background: var(--circle-accent-soft);
+  border: 1px solid var(--circle-accent);
+  color: var(--circle-accent);
+  border-radius: 50px;
+  cursor: pointer;
 }
 
 .card_set_label {
   margin-right: 15px;
+  color: var(--circle-text);
 }
 
 .scorecard_score, .scorecard_player {
-  font-weight:700;
+  font-weight: 700;
+  color: var(--circle-accent);
 }
 
 .checkbox {
@@ -630,6 +722,7 @@ span.debug, span.admin {
 
 .checkbox span {
   vertical-align: middle;
+  color: var(--circle-text);
 }
 
 .nowrap {
@@ -644,16 +737,18 @@ span.debug, span.admin {
 }
 
 dfn {
-  border-bottom: 1px dotted black;
-}
-
-#tweetbox {
-  float: right;
+  border-bottom: 1px dotted var(--circle-accent);
+  cursor: help;
 }
 
 .gamelink {
   cursor: pointer;
   text-decoration: underline;
+  color: var(--circle-accent);
+}
+
+.gamelink:hover {
+  text-shadow: 0 0 4px var(--circle-glow);
 }
 
 .imagecard {
@@ -664,4 +759,52 @@ dfn {
 .card_text {
   word-wrap: break-word;
   overflow: hidden;
+}
+
+a {
+  color: var(--circle-accent);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--circle-text);
+  text-shadow: 0 0 4px var(--circle-glow);
+}
+
+input, select, textarea {
+  background: var(--circle-panel);
+  border: 1px solid var(--circle-border);
+  color: var(--circle-text);
+  border-radius: 8px;
+  padding: 4px 8px;
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: var(--circle-accent);
+  box-shadow: 0 0 0 3px var(--circle-glow);
+}
+
+input[type="button"], input[type="submit"] {
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+input[type="button"]:hover, input[type="submit"]:hover {
+  background: var(--circle-accent-soft);
+  border-color: var(--circle-accent);
+  color: var(--circle-accent);
+}
+
+.ui-widget-content {
+  background: var(--circle-panel);
+  color: var(--circle-text);
+  border: 1px solid var(--circle-border);
+}
+
+.ui-widget-header {
+  background: var(--circle-panel2);
+  color: var(--circle-accent);
+  border: 1px solid var(--circle-border);
 }
