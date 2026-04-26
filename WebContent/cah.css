@@ -1,8 +1,3 @@
-/**
- * Copyright (c) 2012-2018, Andy Janata
- * All rights reserved.
- */
-
 :root {
   --circle-bg: #070a0f;
   --circle-panel: rgba(255, 255, 255, 0.06);
@@ -13,140 +8,437 @@
   --circle-accent: #09ff03;
   --circle-accent-soft: rgba(9, 255, 3, 0.14);
   --circle-radius: 18px;
-  --circle-radius-sm: 14px;
   --circle-shadow: 0 24px 70px rgba(0, 0, 0, 0.45);
 }
 
-/* THE FIX: Master hidden state used by the JS engine */
-.hide {
-  display: none !important;
+* {
+  box-sizing: border-box;
 }
 
 body {
-  min-height: 640px;
   background: radial-gradient(900px 500px at 15% 10%, rgba(9, 255, 3, 0.16), transparent 62%),
               linear-gradient(var(--circle-bg), var(--circle-bg));
   background-attachment: fixed;
   color: var(--circle-text);
-  font-size: 12px;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 14px;
   margin: 0;
-  font-family: ui-sans-serif, system-ui, sans-serif;
-  overflow-x: hidden;
+  min-height: 100vh;
 }
 
-/* ========== WELCOME PAGE ========== */
+/* Welcome Page */
 .welcome-container {
-  max-width: 800px;
+  max-width: 600px;
   margin: 0 auto;
-  padding: 4rem 1.5rem;
+  padding: 2rem 1.5rem;
   text-align: center;
 }
 
-.welcome-container h1 { font-size: 3rem; letter-spacing: -0.02em; margin-bottom: 0.5rem; }
-.welcome-container h3 { color: var(--circle-muted); font-weight: normal; margin-bottom: 2rem; }
+.welcome-container h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
 
+.welcome-container h3 {
+  font-size: 1.1rem;
+  color: var(--circle-muted);
+  font-weight: normal;
+  margin-bottom: 2rem;
+}
+
+.info-box {
+  background: var(--circle-panel);
+  border: 1px solid var(--circle-border);
+  border-radius: var(--circle-radius);
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Nickname Form */
 .nickbox {
   background: var(--circle-panel2);
   border: 1px solid var(--circle-border);
   border-radius: var(--circle-radius);
-  padding: 2rem;
-  max-width: 450px;
-  margin: 0 auto;
+  padding: 1.5rem;
   text-align: left;
 }
 
-.nickbox label { display: block; margin: 10px 0 5px; font-weight: bold; }
-.nickbox input[type="text"], .nickbox input[type="password"] {
-  width: 100%;
-  padding: 12px;
-  background: var(--circle-panel);
-  border: 1px solid var(--circle-border);
-  border-radius: 10px;
-  color: #white;
-  margin-bottom: 10px;
-  box-sizing: border-box;
+.nickbox label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-bottom: 0.3rem;
+  margin-top: 1rem;
 }
 
-.btn-primary {
+.nickbox label:first-of-type {
+  margin-top: 0;
+}
+
+.nickbox input[type="text"],
+.nickbox input[type="password"] {
   width: 100%;
-  background: var(--circle-accent);
-  color: #000;
-  border: none;
-  padding: 14px;
-  border-radius: 40px;
-  font-weight: bold;
-  cursor: pointer;
+  background: var(--circle-panel);
+  border: 1px solid var(--circle-border);
+  border-radius: 12px;
+  padding: 12px;
+  color: var(--circle-text);
   font-size: 1rem;
 }
 
-/* ========== GAME LAYOUT ========== */
-#canvass {
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
+.nickbox input:focus {
+  outline: none;
+  border-color: var(--circle-accent);
+  box-shadow: 0 0 0 3px var(--circle-accent-soft);
+}
+
+.nickbox a {
+  display: inline-block;
+  font-size: 0.8rem;
+  color: var(--circle-accent);
+  margin-top: 0.5rem;
+  text-decoration: none;
+}
+
+.nickbox a:hover {
+  text-decoration: underline;
+}
+
+.button-container {
+  text-align: center;
+  margin-top: 1.5rem;
+}
+
+.btn-primary {
+  background: var(--circle-accent);
+  border: none;
+  border-radius: 40px;
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #000;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn-primary:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 20px rgba(9, 255, 3, 0.3);
+}
+
+.footer-text {
+  font-size: 11px;
+  color: var(--circle-muted);
+  text-align: center;
+  margin-top: 2rem;
+  border-top: 1px solid var(--circle-border);
+  padding-top: 1.5rem;
+}
+
+.footer-text a {
+  color: var(--circle-accent);
+}
+
+/* Game Interface */
+#gamebody {
+  overflow: hidden;
 }
 
 #menubar {
   background: var(--circle-panel2);
   border-bottom: 1px solid var(--circle-border);
-  padding: 10px 20px;
+  backdrop-filter: blur(10px);
+  padding: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+#menubar input, #menubar button {
+  background: var(--circle-panel);
+  border: 1px solid var(--circle-border);
+  border-radius: 20px;
+  padding: 4px 12px;
+  color: var(--circle-text);
+  cursor: pointer;
+}
+
+#menubar input:hover {
+  background: var(--circle-accent-soft);
+  border-color: var(--circle-accent);
+}
+
+#canvas {
+  height: calc(100vh - 140px);
+  overflow: auto;
+  padding: 0.5rem;
+}
+
+/* Game Lobby */
+.gamelist_lobby {
+  background: var(--circle-panel);
+  border: 1px solid var(--circle-border);
+  border-radius: var(--circle-radius);
+  width: calc(50% - 8px);
+  min-width: 300px;
+  float: left;
+  margin: 4px;
+  padding: 0.75rem;
+  transition: transform 0.2s;
+}
+
+.gamelist_lobby:hover {
+  border-color: var(--circle-accent);
+  transform: translateY(-2px);
+}
+
+.gamelist_lobby_left {
+  float: left;
+  width: 75%;
+}
+
+.gamelist_lobby_right {
+  float: right;
+  width: 23%;
+  text-align: center;
+}
+
+.gamelist_lobby_join, .gamelist_lobby_spectate {
+  width: 100%;
+  margin: 4px 0;
+  padding: 6px;
+  background: var(--circle-panel2);
+  border: 1px solid var(--circle-border);
+  border-radius: 20px;
+  color: var(--circle-text);
+  cursor: pointer;
+}
+
+.gamelist_lobby_join:hover, .gamelist_lobby_spectate:hover {
+  background: var(--circle-accent-soft);
+  border-color: var(--circle-accent);
+  color: var(--circle-accent);
+}
+
+/* Chat Section */
+#bottom {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 140px;
+  background: transparent;
+  z-index: 100;
+}
+
+#info_area {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 260px;
+  height: 100%;
+  background: var(--circle-panel2);
+  border: 1px solid var(--circle-border);
+  border-radius: var(--circle-radius);
+  overflow-y: auto;
+}
+
+#tabs {
+  position: absolute;
+  bottom: 0;
+  left: 270px;
+  right: 10px;
+  height: 100%;
+  background: var(--circle-panel2);
+  border: 1px solid var(--circle-border);
+  border-radius: var(--circle-radius);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+#tabs .ui-tabs-nav {
+  background: var(--circle-panel);
+  border-bottom: 1px solid var(--circle-border);
+  padding: 0;
+  margin: 0;
+  display: flex;
+  list-style: none;
+}
+
+#tabs .ui-tabs-tab {
+  margin: 0;
+}
+
+#tabs .ui-tabs-tab a {
+  display: inline-block;
+  padding: 8px 16px;
+  color: var(--circle-muted);
+  text-decoration: none;
+  font-size: 13px;
+}
+
+#tabs .ui-tabs-tab.ui-tabs-active a {
+  color: var(--circle-accent);
+  border-bottom: 2px solid var(--circle-accent);
+}
+
+#tab-global {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 8px;
+  overflow: hidden;
+}
+
+.log {
+  flex: 1;
+  background: var(--circle-panel);
+  border: 1px solid var(--circle-border);
+  border-radius: 12px;
+  padding: 8px;
+  font-size: 13px;
+  overflow-y: auto;
+  margin-bottom: 8px;
+}
+
+.log div {
+  padding: 3px 6px;
+  border-radius: 6px;
+  margin-bottom: 2px;
+  word-wrap: break-word;
+}
+
+.log div:hover {
+  background: var(--circle-accent-soft);
+}
+
+.chat {
+  background: var(--circle-panel);
+  border: 1px solid var(--circle-border);
+  border-radius: 30px;
+  padding: 8px 14px;
+  font-size: 13px;
+  color: var(--circle-text);
+  width: calc(100% - 65px);
+  margin-right: 8px;
+}
+
+.chat:focus {
+  outline: none;
+  border-color: var(--circle-accent);
+  box-shadow: 0 0 0 2px var(--circle-accent-soft);
+}
+
+.chat_submit {
+  background: var(--circle-accent);
+  border: none;
+  border-radius: 30px;
+  padding: 8px 16px;
+  font-size: 13px;
+  font-weight: bold;
+  color: #000;
+  cursor: pointer;
+  width: 55px;
+  text-align: center;
+}
+
+.chat_submit:hover {
+  background: #0cdd00;
+  transform: scale(1.02);
+}
+
+/* Scoreboard */
+.scoreboard {
+  padding: 8px;
+}
+
+.scorecard {
+  background: var(--circle-panel);
+  border-radius: 10px;
+  padding: 6px 10px;
+  margin-bottom: 6px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-#main {
-  flex: 1;
-  padding: 20px;
-  overflow-y: auto;
-  position: relative;
-}
-
-#bottom {
-  height: 180px;
-  background: rgba(0,0,0,0.2);
-  border-top: 1px solid var(--circle-border);
-  display: flex;
-  padding: 10px;
-  gap: 15px;
-}
-
-#info_area { width: 250px; background: var(--circle-panel2); border-radius: var(--circle-radius); }
-#tabs { flex: 1; background: var(--circle-panel2); border-radius: var(--circle-radius); display: flex; flex-direction: column; }
-
-/* ========== CARDS ========== */
+/* Cards */
 .card {
-  width: 180px;
-  height: 240px;
-  padding: 20px;
-  border-radius: var(--circle-radius);
-  border: 1px solid var(--circle-border);
-  font-size: 16px;
-  line-height: 1.4;
-  position: relative;
-  transition: transform 0.2s;
-}
-
-.blackcard { background: #000; color: #fff; border-top: 4px solid var(--circle-accent); }
-.whitecard { background: var(--circle-panel); color: #fff; }
-.card:hover { transform: translateY(-5px); border-color: var(--circle-accent); }
-
-.logo_text { position: absolute; bottom: 15px; left: 15px; font-weight: bold; font-size: 10px; color: var(--circle-muted); }
-
-/* ========== CHAT ========== */
-.log { flex: 1; overflow-y: auto; padding: 10px; font-family: monospace; }
-.chat-input-wrapper { display: flex; padding: 10px; gap: 10px; }
-.chat { flex: 1; background: var(--circle-panel); border: 1px solid var(--circle-border); border-radius: 20px; color: #fff; padding: 8px 15px; }
-.chat_submit { background: var(--circle-accent); border: none; border-radius: 20px; padding: 0 20px; font-weight: bold; cursor: pointer; }
-
-/* ========== GAMELIST ========== */
-.gamelist_lobby {
   background: var(--circle-panel);
   border: 1px solid var(--circle-border);
   border-radius: var(--circle-radius);
-  padding: 15px;
-  margin: 10px;
-  width: 300px;
+  width: 180px;
+  height: 180px;
+  padding: 12px;
   float: left;
+  margin: 6px;
+  transition: transform 0.2s;
+  backdrop-filter: blur(4px);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: var(--circle-accent);
+}
+
+.blackcard {
+  border-top: 3px solid var(--circle-accent);
+}
+
+.whitecard {
+  background: var(--circle-panel);
+}
+
+.game_hand_cards {
+  display: flex;
+  flex-wrap: wrap;
+  overflow-x: auto;
+  padding: 8px;
+}
+
+.hide {
+  display: none;
+}
+
+.clear {
+  clear: both;
+}
+
+.error {
+  color: #ff5555;
+  font-size: 0.8rem;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  #bottom {
+    position: static;
+    height: auto;
+    margin-top: 20px;
+  }
+  
+  #tabs {
+    position: static;
+    left: auto;
+    right: auto;
+    margin: 10px;
+  }
+  
+  #info_area {
+    position: static;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  
+  .gamelist_lobby {
+    width: 100%;
+  }
+  
+  .card {
+    width: 140px;
+    height: 140px;
+    font-size: 12px;
+  }
 }
