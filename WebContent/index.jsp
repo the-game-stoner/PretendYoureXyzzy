@@ -34,7 +34,7 @@ Index page - warm and welcoming for The-Circle community.
 <link rel="stylesheet" type="text/css" href="cah.css" />
 <style>
   .welcome-container {
-    max-width: 800px;
+    max-width: 900px;
     margin: 0 auto;
     padding: 2rem 1.5rem;
     animation: fadeIn 0.6s ease-out;
@@ -43,44 +43,58 @@ Index page - warm and welcoming for The-Circle community.
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
   }
+  h1 {
+    font-size: 48px;
+    margin-bottom: 8px;
+  }
+  h3 {
+    font-size: 20px;
+    font-weight: normal;
+    margin-bottom: 32px;
+    color: var(--circle-muted);
+  }
   .info-box {
     background: var(--circle-panel);
     border: 1px solid var(--circle-border);
-    border-radius: var(--circle-radius);
-    padding: 1.25rem 1.5rem;
-    margin-bottom: 1.25rem;
+    border-radius: 20px;
+    padding: 24px 28px;
+    margin-bottom: 20px;
     transition: all 0.2s ease;
   }
   .info-box:hover {
     border-color: var(--circle-accent);
-    transform: translateX(4px);
   }
   .how-to-play {
     background: var(--circle-accent-soft);
     border-left: 4px solid var(--circle-accent);
   }
+  .how-to-play p {
+    font-size: 18px;
+    margin: 0 0 16px 0;
+  }
   .how-to-play ol {
-    margin: 0.5rem 0 0 1.25rem;
-    padding: 0;
+    margin: 0;
+    padding-left: 20px;
   }
   .how-to-play li {
-    margin: 0.5rem 0;
-    line-height: 1.4;
+    font-size: 16px;
+    margin: 12px 0;
+    line-height: 1.5;
   }
   .privacy-note {
-    font-size: 0.85rem;
+    font-size: 14px;
     color: var(--circle-muted);
     text-align: center;
-    margin: 1rem 0;
+    margin: 20px 0;
   }
   .btn-primary {
     background: var(--circle-accent);
     border: none;
-    border-radius: 40px;
-    padding: 14px 36px;
-    font-size: 1.2rem;
+    border-radius: 60px;
+    padding: 16px 48px;
+    font-size: 20px;
     font-weight: bold;
-    color: #000;
+    color: #070a0f;
     cursor: pointer;
     transition: all 0.2s ease;
     animation: pulse 2s infinite;
@@ -89,21 +103,30 @@ Index page - warm and welcoming for The-Circle community.
     animation: none;
     background: #0cdd00;
     transform: scale(1.02);
+    box-shadow: 0 0 20px rgba(9,255,3,0.4);
   }
   @keyframes pulse {
-    0%, 100% { box-shadow: 0 0 0 0 rgba(9, 255, 3, 0.4); }
-    50% { box-shadow: 0 0 0 10px rgba(9, 255, 3, 0); }
+    0%, 100% { box-shadow: 0 0 0 0 rgba(9, 255, 3, 0.5); }
+    50% { box-shadow: 0 0 0 12px rgba(9, 255, 3, 0); }
   }
   .footer-text {
-    font-size: 11px;
+    font-size: 13px;
     text-align: center;
-    margin-top: 2rem;
+    margin-top: 40px;
     border-top: 1px solid var(--circle-border);
-    padding-top: 1.5rem;
+    padding-top: 24px;
     color: var(--circle-muted);
   }
   .footer-text a {
     color: var(--circle-accent);
+    text-decoration: none;
+  }
+  .footer-text a:hover {
+    text-decoration: underline;
+  }
+  dfn {
+    border-bottom: 1px dotted var(--circle-accent);
+    cursor: help;
   }
 </style>
 </head>
@@ -111,11 +134,11 @@ Index page - warm and welcoming for The-Circle community.
 
 <div class="welcome-container">
   <h1>🎉 Terrible <dfn title="Party game for The-Circle community">People</dfn></h1>
-  <h3>A party game for The-Circle community — get ready to laugh!</h3>
+  <h3>A Cards Against Humanity-style party game — get ready to laugh!</h3>
 
-  <!-- HOW TO PLAY - friendly and clear -->
+  <!-- HOW TO PLAY - clean and readable -->
   <div class="info-box how-to-play">
-    <p style="margin: 0 0 0.5rem 0; font-weight: bold; font-size: 1.1rem;">🎲 How to Play</p>
+    <p><strong>🎲 How to Play</strong></p>
     <ol>
       <li><strong>Pick a nickname</strong> — anything goes!</li>
       <li><strong>Join or create a game</strong> — play with friends or the community</li>
@@ -124,27 +147,28 @@ Index page - warm and welcoming for The-Circle community.
       <li><strong>The Czar picks the winner</strong> — that player gets an Awesome Point!</li>
       <li><strong>First to reach the score limit wins!</strong> 🏆</li>
     </ol>
-    <p style="margin: 0.75rem 0 0 0; font-size: 0.9rem;">💡 <strong>Pro tip:</strong> The funniest or most creative answer usually wins. Be terrible!</p>
+    <p style="margin-top: 16px; font-size: 14px;">💡 <strong>Pro tip:</strong> The funniest or most creative answer usually wins. Be terrible!</p>
   </div>
 
-  <!-- PRIVACY - short and sweet -->
+  <!-- PRIVACY - short and clear -->
   <div class="privacy-note">
-    🔒 IPs logged for security only — gameplay stats are anonymous. <a href="privacy.html" style="color: var(--circle-accent);">Learn more</a>
+    🔒 <strong>Privacy:</strong> Your IP is logged for security only. Gameplay stats are anonymous. 
+    <a href="privacy.html" style="color: var(--circle-accent);">Full details →</a>
   </div>
 
-  <!-- BUTTON -->
-  <div style="text-align: center; margin: 1.5rem 0;">
+  <!-- BIG PLAY BUTTON -->
+  <div style="text-align: center; margin: 32px 0 16px;">
     <input type="button" class="btn-primary" value="🎮 Let's Play →"
       onclick="window.location='game.jsp';" />
   </div>
 
   <!-- FOOTER -->
-  <p class="footer-text">
-    Terrible People is a party game for The-Circle community, inspired by Cards Against Humanity.
-    <br />
-    <a href="https://github.com/the-game-stoner/Terrible-People">Source code</a> • 
+  <div class="footer-text">
+    Terrible People is hosted by <a href="https://www.the-circle.xyz">The-Circle.xyz</a> • 
+    Inspired by Cards Against Humanity • 
+    <a href="https://github.com/the-game-stoner/Terrible-People">Source on GitHub</a> • 
     <a href="license.html">License</a>
-  </p>
+  </div>
 </div>
 
 </body>
