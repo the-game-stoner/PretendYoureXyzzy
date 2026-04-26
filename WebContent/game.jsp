@@ -193,6 +193,17 @@ boolean allowBlankCards = injector.getInstance(Key.get(new TypeLiteral<Boolean>(
     </div>
     <div class="game_hand"><div class="game_hand_cards"></div></div>
   </div>
+  
+  <div id="white_down_template" class="card whitecard"></div>
+  <div id="black_down_template" class="card blackcard"></div>
+  <div id="scoreboard_template" class="scoreboard"><div class="game_message">Scoreboard</div></div>
+  <div id="scorecard_template" class="scorecard">
+    <span class="scorecard_player"></span>
+    <span class="scorecard_points"><span class="scorecard_score">0</span> Awesome Points</span>
+    <span class="scorecard_status"></span>
+  </div>
 </div>
+
+<div style="position:absolute; left:-99999px" role="alert" id="aria-notifications"></div>
 </body>
 </html>
