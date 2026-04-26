@@ -171,17 +171,23 @@ boolean allowBlankCards = injector.getInstance(Key.get(new TypeLiteral<Boolean>(
       <input type="button" class="gamelist_lobby_join" value="Join" />
     </div>
   </div>
+</div>
 
+<div class="hide">
   <div id="black_up_template" class="card blackcard">
     <span class="card_text"></span>
     <div class="logo"><div class="logo_text">Terrible People</div></div>
   </div>
+</div>
 
+<div class="hide">
   <div id="white_up_template" class="card whitecard">
     <span class="card_text"></span>
     <div class="logo"><div class="logo_text">Terrible People</div></div>
   </div>
+</div>
 
+<div class="hide">
   <div id="game_template" class="game">
     <div class="game_top">
       <input type="button" class="game_show_options game_menu_bar" value="Options" />
@@ -193,10 +199,15 @@ boolean allowBlankCards = injector.getInstance(Key.get(new TypeLiteral<Boolean>(
     </div>
     <div class="game_hand"><div class="game_hand_cards"></div></div>
   </div>
-  
-  <div id="white_down_template" class="card whitecard"></div>
-  <div id="black_down_template" class="card blackcard"></div>
+</div>
+
+<div class="hide"><div id="white_down_template" class="card whitecard"></div></div>
+<div class="hide"><div id="black_down_template" class="card blackcard"></div></div>
+<div class="hide">
   <div id="scoreboard_template" class="scoreboard"><div class="game_message">Scoreboard</div></div>
+</div>
+
+<div class="hide">
   <div id="scorecard_template" class="scorecard">
     <span class="scorecard_player"></span>
     <span class="scorecard_points"><span class="scorecard_score">0</span> Awesome Points</span>
