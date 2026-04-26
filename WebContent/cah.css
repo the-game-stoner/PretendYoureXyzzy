@@ -367,11 +367,11 @@ h2, h3, h4 {
   color: var(--circle-muted);
 }
 
-/* ========== CHAT SECTION FIXED ========== */
+/* ========== CHAT SECTION ========== */
 
 #bottom {
   width: 100%;
-  height: 110px;
+  height: 140px;
   position: fixed;
   bottom: 0;
   left: 0;
