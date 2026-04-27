@@ -168,7 +168,7 @@ Index page - warm and welcoming for The-Circle community.
     Inspired by Cards Against Humanity • 
     <a href="https://github.com/the-game-stoner/Terrible-People">Source on GitHub</a> • 
     <a href="license.html">License</a> • 
-    <a href="changelog.jsp">📋 Changelog</a>
+    <a href="changelog.html">📋 Changelog</a>
   </div>
 </div>
 
