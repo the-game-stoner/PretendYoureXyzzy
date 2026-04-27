@@ -4,56 +4,240 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Pretend You're Xyzzy - License Information</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Terrible People - License Information</title>
+<link rel="stylesheet" type="text/css" href="cah.css" media="screen" />
+<style>
+  :root {
+    --circle-bg: #070a0f;
+    --circle-panel: rgba(255,255,255,0.06);
+    --circle-panel2: rgba(255,255,255,0.04);
+    --circle-border: rgba(255,255,255,0.12);
+    --circle-text: rgba(255,255,255,0.92);
+    --circle-muted: rgba(255,255,255,0.68);
+    --circle-accent: #09ff03;
+    --circle-accent-soft: rgba(9,255,3,0.14);
+  }
+  
+  body {
+    background: radial-gradient(900px 500px at 15% 10%, rgba(9,255,3,0.12), transparent 62%),
+                linear-gradient(var(--circle-bg), var(--circle-bg));
+    background-attachment: fixed;
+    color: var(--circle-text);
+    font-family: ui-sans-serif, system-ui, 'Segoe UI', sans-serif;
+    margin: 0;
+    min-height: 100vh;
+    padding: 40px 20px;
+  }
+  
+  .license-container {
+    max-width: 900px;
+    margin: 0 auto;
+    animation: fadeIn 0.5s ease-out;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  h1 {
+    font-size: 32px;
+    margin-bottom: 16px;
+    margin-top: 32px;
+    color: var(--circle-accent);
+    border-bottom: 2px solid var(--circle-border);
+    padding-bottom: 8px;
+  }
+  
+  h1:first-of-type {
+    margin-top: 0;
+  }
+  
+  h2 {
+    font-size: 22px;
+    margin-top: 24px;
+    margin-bottom: 12px;
+    color: var(--circle-text);
+  }
+  
+  h3 {
+    font-size: 18px;
+    margin-top: 20px;
+    margin-bottom: 8px;
+    color: var(--circle-accent);
+  }
+  
+  p {
+    font-size: 14px;
+    line-height: 1.6;
+    margin: 12px 0;
+  }
+  
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--circle-panel);
+    border: 1px solid var(--circle-border);
+    border-radius: 40px;
+    padding: 8px 20px;
+    margin-bottom: 24px;
+    color: var(--circle-text);
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+  
+  .back-link:hover {
+    border-color: var(--circle-accent);
+    color: var(--circle-accent);
+    transform: translateX(-4px);
+  }
+  
+  .info-box {
+    background: var(--circle-panel);
+    border: 1px solid var(--circle-border);
+    border-radius: 20px;
+    padding: 20px 24px;
+    margin-bottom: 20px;
+    transition: all 0.2s ease;
+  }
+  
+  .info-box:hover {
+    border-color: var(--circle-accent);
+  }
+  
+  pre {
+    background: rgba(0,0,0,0.4);
+    border: 1px solid var(--circle-border);
+    border-radius: 12px;
+    padding: 16px;
+    font-family: 'Monaco', 'Menlo', monospace;
+    font-size: 12px;
+    line-height: 1.5;
+    overflow-x: auto;
+    color: var(--circle-muted);
+    margin: 16px 0;
+  }
+  
+  ul, ol {
+    margin: 12px 0;
+    padding-left: 24px;
+  }
+  
+  li {
+    font-size: 14px;
+    line-height: 1.6;
+    margin: 6px 0;
+  }
+  
+  a {
+    color: var(--circle-accent);
+    text-decoration: none;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  
+  hr {
+    border: none;
+    border-top: 1px solid var(--circle-border);
+    margin: 24px 0;
+  }
+  
+  .badge {
+    display: inline-block;
+    background: var(--circle-accent-soft);
+    color: var(--circle-accent);
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 20px;
+    margin-left: 8px;
+    vertical-align: middle;
+  }
+  
+  .license-footer {
+    margin-top: 40px;
+    padding-top: 20px;
+    text-align: center;
+    font-size: 12px;
+    color: var(--circle-muted);
+    border-top: 1px solid var(--circle-border);
+  }
+</style>
 </head>
 <body>
-  <h1>Pretend You're Xyzzy game</h1>
-  <p>
-    Pretend You're Xyzzy is a Cards Against Humanity clone, which is available at
-    <a href="http://www.cardsagainsthumanity.com/">cardsagainsthumanity.com</a>, where you can buy
-    it or download and print it out yourself. It is distributed under a <a
-      href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons - Attribution -
-      Noncommercial - Share Alike license</a>. This web version is in no way endorsed or sponsored
-    by cardsagainsthumanity.com. You may download the source code to this version from
-    <a href="https://github.com/ajanata/PretendYoureXyzzy">GitHub</a>.
-  </p>
-  <h1>Server and client game logic code.</h1>
-  <p>
-    Pretend You're Xyzzy, Java server and JavaScript client, Copyright &copy; 2012-2017, Andy Janata.
-    <br />
-    All rights reserved.
-    <br /> <br />
-    Redistribution and use in source and binary forms, with or
-    without modification, are permitted provided that the following conditions are met:
-  </p>
-  <ol>
-    <li>Redistributions of source code must retain the above copyright notice, this list of
-      conditions and the following disclaimer.</li>
-    <li>Redistributions in binary form must reproduce the above copyright notice, this list of
-      conditions and the following disclaimer in the documentation and/or other materials provided
-      with the distribution.</li>
-  </ol>
-  <p>THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS
-    OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY
-    AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR
-    CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
-    CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
-    SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
-    THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
-    OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
-    POSSIBILITY OF SUCH DAMAGE.</p>
-  <h1>Card Database</h1>
-  <p>
-    This Pretend You're Xyzzy server stores its card data in a PostgreSQL database. The script to
-    create this database and populate it with the standard Cards Against Humanity cards is licensed
-    under a <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons -
-      Attribution - Noncommercial - Share Alike license</a>, just like Cards Against Humanity itself.
-  </p>
-  <h1>Third-party libraries</h1>
-  <p>The client and server make extensive use of third-party libraries. These libraries have
-    their own license terms. Any relevant information is provided here.</p>
+<div class="license-container">
+  <a href="index.jsp" class="back-link">← Back to Game</a>
 
-  <h2>Client</h2>
+  <h1>📜 Game License <span class="badge">Cards Against Humanity</span></h1>
+  <div class="info-box">
+    <p>
+      Pretend You're Xyzzy is a Cards Against Humanity clone, which is available at
+      <a href="http://www.cardsagainsthumanity.com/">cardsagainsthumanity.com</a>, where you can buy
+      it or download and print it out yourself. It is distributed under a 
+      <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons - Attribution -
+      Noncommercial - Share Alike license</a>. This web version is in no way endorsed or sponsored
+      by cardsagainsthumanity.com. You may download the source code to this version from
+      <a href="https://github.com/the-game-stoner/Terrible-People">GitHub</a>.
+    </p>
+  </div>
+
+  <h1>⚙️ Server & Client Code <span class="badge">BSD 2-Clause</span></h1>
+  <div class="info-box">
+    <p>
+      Terrible People (Pretend You're Xyzzy fork), Java server and JavaScript client.<br />
+      Copyright © 2012-2017, Andy Janata. Modified by The-Circle community.
+      <br /><br />
+      All rights reserved.
+      <br /><br />
+      Redistribution and use in source and binary forms, with or without modification, are permitted
+      provided that the following conditions are met:
+    </p>
+    <ol>
+      <li>Redistributions of source code must retain the above copyright notice, this list of
+        conditions and the following disclaimer.</li>
+      <li>Redistributions in binary form must reproduce the above copyright notice, this list of
+        conditions and the following disclaimer in the documentation and/or other materials provided
+        with the distribution.</li>
+    </ol>
+    <pre>
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS
+OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY
+AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR
+CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+POSSIBILITY OF SUCH DAMAGE.
+    </pre>
+  </div>
+
+  <h1>💾 Card Database</h1>
+  <div class="info-box">
+    <p>
+      This server stores its card data in a PostgreSQL database. The script to create this database
+      and populate it with the standard Cards Against Humanity cards is licensed under a 
+      <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons - Attribution -
+      Noncommercial - Share Alike license</a>, just like Cards Against Humanity itself.
+    </p>
+  </div>
+
+  <h1>📚 Third-Party Libraries</h1>
+  <div class="info-box">
+    <p>The client and server make extensive use of third-party libraries. These libraries have
+    their own license terms. Any relevant information is provided here.</p>
+  </div>
+
+  <h2>🖥️ Client</h2>
 
   <h3>jQuery</h3>
   <pre>
@@ -106,43 +290,43 @@ OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 </pre>
 
-  <h2>Server</h2>
+  <h2>🗄️ Server</h2>
 
-This product includes GeoLite2 data created by MaxMind, available from
-<a href="http://www.maxmind.com">http://www.maxmind.com</a>.
+  <div class="info-box">
+    <p>This product includes GeoLite2 data created by MaxMind, available from
+    <a href="http://www.maxmind.com">http://www.maxmind.com</a>.</p>
+  </div>
 
   <h3>ANTLR</h3>
-  Copyright (c) 2010 Terence Parr
-  <br /> All rights reserved.
-  <br /> Redistribution and use in source and binary forms, with or without modification, are
-  permitted provided that the following conditions are met:
-  <ul>
-    <li>Redistributions of source code must retain the above copyright notice, this list of
-      conditions and the following disclaimer.</li>
-    <li>Redistributions in binary form must reproduce the above copyright notice, this list of
-      conditions and the following disclaimer in the documentation and/or other materials provided
-      with the distribution.</li>
-    <li>Neither the name of the author nor the names of its contributors may be used to endorse
-      or promote products derived from this software without specific prior written permission.</li>
-  </ul>
-  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR
-  IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
-  FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
-  CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
-  DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
-  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER
-  IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT
-  OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  <pre>
+Copyright (c) 2010 Terence Parr
+All rights reserved.
 
-  <h3>
-    <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache Commons Collections</a>
-  </h3>
-  <h3>
-    <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache Commons Lang</a>
-  </h3>
-  <h3>
-    <a href="http://asm.ow2.org/">ASM</a>
-  </h3>
+Redistribution and use in source and binary forms, with or without modification, are
+permitted provided that the following conditions are met:
+
+- Redistributions of source code must retain the above copyright notice, this list of
+  conditions and the following disclaimer.
+- Redistributions in binary form must reproduce the above copyright notice, this list of
+  conditions and the following disclaimer in the documentation and/or other materials provided
+  with the distribution.
+- Neither the name of the author nor the names of its contributors may be used to endorse
+  or promote products derived from this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR
+IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
+FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
+CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER
+IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT
+OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+</pre>
+
+  <h3>Apache Commons Collections / Lang</h3>
+  <p>Licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License 2.0</a></p>
+
+  <h3>ASM</h3>
   <pre>
 Copyright (c) 2000-2011 INRIA, France Telecom
 All rights reserved.
@@ -173,66 +357,34 @@ INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
 CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
 ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
 THE POSSIBILITY OF SUCH DAMAGE.
-  </pre>
-  <h3>
-    <a href="http://www.apache.org/licenses/LICENSE-2.0">atinject</a>
-  </h3>
+</pre>
 
   <h3>dom4j</h3>
-  Redistribution and use of this software and associated documentation ("Software"), with or without
-  modification, are permitted provided that the following conditions are met:
-  <ol>
-    <li>Redistributions of source code must retain copyright statements and notices.
-      Redistributions must also contain a copy of this document.</li>
-    <li>Redistributions in binary form must reproduce the above copyright notice, this list of
-      conditions and the following disclaimer in the documentation and/or other materials provided
-      with the distribution.</li>
-    <li>The name "DOM4J" must not be used to endorse or promote products derived from this
-      Software without prior written permission of MetaStuff, Ltd. For written permission, please
-      contact dom4j-info@metastuff.com.</li>
-    <li>Products derived from this Software may not be called "DOM4J" nor may "DOM4J" appear in
-      their names without prior written permission of MetaStuff, Ltd. DOM4J is a registered
-      trademark of MetaStuff, Ltd.</li>
-    <li>Due credit should be given to the DOM4J Project - http://dom4j.sourceforge.net</li>
-  </ol>
-  THIS SOFTWARE IS PROVIDED BY METASTUFF, LTD. AND CONTRIBUTORS ``AS IS'' AND ANY EXPRESSED OR
-  IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
-  FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL METASTUFF, LTD. OR ITS
-  CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
-  DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
-  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER
-  IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT
-  OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-  <br />
-  <br /> Copyright 2001-2005 (C) MetaStuff, Ltd. All Rights Reserved.
+  <pre>
+Copyright 2001-2005 (C) MetaStuff, Ltd. All Rights Reserved.
 
-  <h3>
-    <a href="http://www.apache.org/licenses/LICENSE-2.0">cglib</a>
-  </h3>
-  <h3>
-    <a href="http://www.apache.org/licenses/LICENSE-2.0">EasyMock</a>
-  </h3>
-  <h3>
-    <a href="http://www.apache.org/licenses/LICENSE-2.0">Guice</a>
-  </h3>
-  <h3>
-    <a href="http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html">Hibernate</a>
-  </h3>
-  <h3>
-    <a href="http://www.apache.org/licenses/LICENSE-2.0">Javassist</a>
-  </h3>
-  <h3>
-    <a href="http://www.eclipse.org/legal/epl-v10.html">Java Persistence</a>
-  </h3>
-  <h3>
-    <a href="http://www.opensource.org/licenses/CDDL-1.0">Java Transactions</a>
-  </h3>
-  <h3>
-    <a href="http://www.apache.org/licenses/LICENSE-2.0">JSON.simple</a>
-  </h3>
-  <h3>
-    <a href="http://www.apache.org/licenses/LICENSE-2.0">log4j</a>
-  </h3>
+Redistribution and use of this software and associated documentation ("Software"), with or without
+modification, are permitted provided that the following conditions are met:
+
+1. Redistributions of source code must retain copyright statements and notices.
+2. Redistributions in binary form must reproduce the above copyright notice, this list of
+   conditions and the following disclaimer in the documentation and/or other materials provided
+   with the distribution.
+3. The name "DOM4J" must not be used to endorse or promote products derived from this
+   Software without prior written permission of MetaStuff, Ltd.
+4. Products derived from this Software may not be called "DOM4J" nor may "DOM4J" appear in
+   their names without prior written permission of MetaStuff, Ltd.
+5. Due credit should be given to the DOM4J Project - http://dom4j.sourceforge.net
+
+THIS SOFTWARE IS PROVIDED BY METASTUFF, LTD. AND CONTRIBUTORS ``AS IS'' AND ANY EXPRESSED OR
+IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
+FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL METASTUFF, LTD. OR ITS
+CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER
+IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT
+OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+</pre>
 
   <h3>PostgreSQL JDBC driver</h3>
   <pre>
@@ -262,37 +414,53 @@ INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
 CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
 ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 POSSIBILITY OF SUCH DAMAGE.
-  </pre>
+</pre>
 
-  <h3>
-    <a href="http://www.apache.org/licenses/LICENSE-2.0">Objenesis</a>
-  </h3>
   <h3>SLF4J</h3>
   <pre>
 Copyright (c) 2004-2011 QOS.ch
 All rights reserved.
 
-Permission is hereby granted, free  of charge, to any person obtaining
-a  copy  of this  software  and  associated  documentation files  (the
-"Software"), to  deal in  the Software without  restriction, including
-without limitation  the rights to  use, copy, modify,  merge, publish,
-distribute,  sublicense, and/or sell  copies of  the Software,  and to
-permit persons to whom the Software  is furnished to do so, subject to
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+"Software"), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
 the following conditions:
 
-The  above  copyright  notice  and  this permission  notice  shall  be
+The above copyright notice and this permission notice shall be
 included in all copies or substantial portions of the Software.
 
-THE  SOFTWARE IS  PROVIDED  "AS  IS", WITHOUT  WARRANTY  OF ANY  KIND,
-EXPRESS OR  IMPLIED, INCLUDING  BUT NOT LIMITED  TO THE  WARRANTIES OF
-MERCHANTABILITY,    FITNESS    FOR    A   PARTICULAR    PURPOSE    AND
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
 NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
 LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
-OF CONTRACT, TORT OR OTHERWISE,  ARISING FROM, OUT OF OR IN CONNECTION
+OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-  </pre>
-  <h3>
-    <a href="http://www.apache.org/licenses/LICENSE-2.0">UADetector</a>
-  </h3>
+</pre>
+
+  <h3>Other Libraries (Apache 2.0 / similar)</h3>
+  <ul>
+    <li><a href="http://www.apache.org/licenses/LICENSE-2.0">atinject</a></li>
+    <li><a href="http://www.apache.org/licenses/LICENSE-2.0">cglib</a></li>
+    <li><a href="http://www.apache.org/licenses/LICENSE-2.0">EasyMock</a></li>
+    <li><a href="http://www.apache.org/licenses/LICENSE-2.0">Guice</a></li>
+    <li><a href="http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html">Hibernate (LGPL 2.1)</a></li>
+    <li><a href="http://www.apache.org/licenses/LICENSE-2.0">Javassist</a></li>
+    <li><a href="http://www.eclipse.org/legal/epl-v10.html">Java Persistence (EPL 1.0)</a></li>
+    <li><a href="http://www.opensource.org/licenses/CDDL-1.0">Java Transactions (CDDL 1.0)</a></li>
+    <li><a href="http://www.apache.org/licenses/LICENSE-2.0">JSON.simple</a></li>
+    <li><a href="http://www.apache.org/licenses/LICENSE-2.0">log4j</a></li>
+    <li><a href="http://www.apache.org/licenses/LICENSE-2.0">Objenesis</a></li>
+    <li><a href="http://www.apache.org/licenses/LICENSE-2.0">UADetector</a></li>
+  </ul>
+
+  <div class="license-footer">
+    <p>Terrible People is a fork of Pretend You're Xyzzy, originally created by Andy Janata.<br />
+    All license notices and attributions are preserved in accordance with their respective licenses.</p>
+  </div>
+</div>
 </body>
 </html>
