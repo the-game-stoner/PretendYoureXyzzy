@@ -128,6 +128,7 @@ if ("true".equals(reloadProps)) {
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <title>Terrible People - Admin</title>
+<link rel="icon" type="image/png" href="favicon.png" />
 <link rel="stylesheet" type="text/css" href="cah.css" media="screen" />
 <style>
   :root {
@@ -291,7 +292,7 @@ if ("true".equals(reloadProps)) {
   <h1>🛡️ Terrible People - Admin Panel</h1>
 
   <div class="stats-grid">
-    <table>
+    <tr>
       <tr>
         <th style="width: 200px;">Server Uptime</th>
         <td>
@@ -313,7 +314,7 @@ if ("true".equals(reloadProps)) {
 
   <h2>💾 Memory Usage</h2>
   <div class="stats-grid">
-    <table>
+    </table>
       <tr>
         <th style="width: 200px;">Stat</th>
         <th>MiB</th>
@@ -339,7 +340,7 @@ if ("true".equals(reloadProps)) {
 
   <h2>🚫 Ban List</h2>
   <div class="stats-grid">
-    <table>
+    </table>
       <thead>
         <tr>
           <th>Host</th>
