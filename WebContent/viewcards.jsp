@@ -134,6 +134,7 @@ try {
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <title>Terrible People - Card Viewer</title>
+<link rel="icon" type="image/png" href="favicon.png" />
 <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
 <script type="text/javascript" src="js/jquery-migrate-1.2.1.js"></script>
 <script type="text/javascript" src="js/jquery.cookie.js"></script>
@@ -352,7 +353,7 @@ $(document).ready(function() {
         <td><span class="watermark-badge">' + (card.watermark || '') + '</span></td>\
         <td>' + card.draw + '</td>\
         <td>' + card.pick + '</td>\
-      </tr>');
+      <tr>');
   }
   for (var id in data.whiteCards) {
     var card = data.whiteCards[id];
