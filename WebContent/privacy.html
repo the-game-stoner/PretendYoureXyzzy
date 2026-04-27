@@ -4,38 +4,186 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Terrible People - Privacy Information</title>
 <link rel="stylesheet" type="text/css" href="cah.css" media="screen" />
+<style>
+  :root {
+    --circle-bg: #070a0f;
+    --circle-panel: rgba(255,255,255,0.06);
+    --circle-panel2: rgba(255,255,255,0.04);
+    --circle-border: rgba(255,255,255,0.12);
+    --circle-text: rgba(255,255,255,0.92);
+    --circle-muted: rgba(255,255,255,0.68);
+    --circle-accent: #09ff03;
+    --circle-accent-soft: rgba(9,255,3,0.14);
+  }
+  
+  body {
+    background: radial-gradient(900px 500px at 15% 10%, rgba(9,255,3,0.12), transparent 62%),
+                linear-gradient(var(--circle-bg), var(--circle-bg));
+    background-attachment: fixed;
+    color: var(--circle-text);
+    font-family: ui-sans-serif, system-ui, 'Segoe UI', sans-serif;
+    margin: 0;
+    min-height: 100vh;
+    padding: 40px 20px;
+  }
+  
+  .privacy-container {
+    max-width: 800px;
+    margin: 0 auto;
+    animation: fadeIn 0.5s ease-out;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  h1 {
+    font-size: 42px;
+    margin-bottom: 8px;
+    background: linear-gradient(135deg, #fff 0%, var(--circle-accent) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  
+  h3 {
+    font-size: 20px;
+    font-weight: normal;
+    color: var(--circle-muted);
+    margin-bottom: 32px;
+    border-bottom: 1px solid var(--circle-border);
+    padding-bottom: 16px;
+  }
+  
+  h2 {
+    font-size: 18px;
+    color: var(--circle-accent);
+    margin-top: 0;
+    margin-bottom: 12px;
+  }
+  
+  .info-box {
+    background: var(--circle-panel);
+    border: 1px solid var(--circle-border);
+    border-radius: 20px;
+    padding: 20px 24px;
+    margin-bottom: 20px;
+    transition: all 0.2s ease;
+  }
+  
+  .info-box:hover {
+    border-color: var(--circle-accent);
+    transform: translateX(4px);
+  }
+  
+  .info-box.highlight {
+    background: var(--circle-accent-soft);
+    border-left: 4px solid var(--circle-accent);
+  }
+  
+  p {
+    font-size: 15px;
+    line-height: 1.6;
+    margin: 0 0 12px 0;
+    color: var(--circle-text);
+  }
+  
+  ul {
+    margin: 12px 0;
+    padding-left: 24px;
+  }
+  
+  li {
+    font-size: 14px;
+    line-height: 1.6;
+    margin: 8px 0;
+    color: var(--circle-muted);
+  }
+  
+  strong {
+    color: var(--circle-accent);
+    font-weight: 600;
+  }
+  
+  .button-container {
+    text-align: center;
+    margin-top: 32px;
+  }
+  
+  .btn-primary {
+    background: linear-gradient(135deg, var(--circle-accent) 0%, #0dcc00 100%);
+    border: none;
+    border-radius: 40px;
+    padding: 14px 36px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #070a0f;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    display: inline-block;
+  }
+  
+  .btn-primary:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 20px rgba(9,255,3,0.4);
+  }
+  
+  a {
+    color: var(--circle-accent);
+    text-decoration: none;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  
+  hr {
+    border: none;
+    border-top: 1px solid var(--circle-border);
+    margin: 20px 0;
+  }
+</style>
 </head>
 <body>
-<div class="welcome-container">
-  <h1>Terrible People</h1>
+<div class="privacy-container">
+  <h1>🎴 Terrible People</h1>
   <h3>Privacy Information</h3>
 
-  <div class="info-box">
-    <p><strong>Note:</strong> This privacy policy applies to this instance of Terrible People (The-Circle community). Other servers may have different logging policies.</p>
+  <div class="info-box highlight">
+    <p><strong>ℹ️ Note:</strong> This privacy policy applies to this instance of Terrible People (The-Circle community). Other servers may have different logging policies.</p>
   </div>
 
   <div class="info-box">
-    <h2>Temporary Logs</h2>
-    <p>Logs containing your IP address are collected and kept for a few weeks to assist with server monitoring. These logs are not correlated to your username and are not shared with third parties.</p>
+    <h2>📋 Temporary Logs</h2>
+    <p>Logs containing your IP address are collected and kept for a few weeks to assist with server monitoring. These logs are <strong>not correlated to your username</strong> and are not shared with third parties.</p>
   </div>
 
   <div class="info-box">
-    <h2>Permanent Logs</h2>
-    <p>Gameplay details are kept permanently to analyze card popularity. These logs never contain personally identifiable information, but may include:</p>
+    <h2>📊 Permanent Logs</h2>
+    <p>Gameplay details are kept permanently to analyze card popularity. These logs <strong>never contain personally identifiable information</strong>, but may include:</p>
     <ul>
       <li>A temporary ID to correlate cards played during a session</li>
-      <li>A persistent ID to correlate activity between sessions (you can opt out in Preferences)</li>
+      <li>A persistent ID to correlate activity between sessions <em>(you can opt out in Preferences)</em></li>
       <li>Rough geographic location (city, state, country, postal code)</li>
       <li>Browser name and language</li>
       <li>Device operating system and type (phone, tablet, PC, etc.)</li>
     </ul>
-    <p><strong>Your IP address, chosen username, and chat are never shared with anyone. Fill-in-the-blank card text is logged and shared.</strong></p>
+    <p><strong>Your IP address, chosen username, and chat are never shared with anyone.</strong> Fill-in-the-blank card text is logged and shared.</p>
   </div>
 
   <div class="button-container">
-    <a href="index.jsp"><input type="button" class="btn-primary" value="Back to Game" /></a>
+    <a href="index.jsp"><button class="btn-primary">← Back to Game</button></a>
   </div>
 </div>
 </body>
