@@ -31,6 +31,7 @@ Index page - warm and welcoming for The-Circle community.
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Terrible People — Let's play!</title>
+<link rel="icon" type="image/png" href="favicon.png" />
 <link rel="stylesheet" type="text/css" href="cah.css" />
 <style>
   .welcome-container {
